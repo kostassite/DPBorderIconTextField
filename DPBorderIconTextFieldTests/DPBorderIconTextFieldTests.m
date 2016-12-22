@@ -96,6 +96,73 @@
     XCTAssertEqual([[textField valueForKey:@"iconImageView"] frame].origin.x, textField.iconLeftInset);
 }
 
+-(void)testThatTextFieldIsInitWithCorrectValues{
+    
+    textField.text = @"Test";
+    textField.placeholder = @"Placeholder";
+    textField.font = [UIFont boldSystemFontOfSize:11];
+    textField.textColor = [UIColor redColor];
+    
+    [textField awakeFromNib];
+    
+    UITextField *tf = [textField valueForKey:@"textField"];
+    
+    XCTAssertEqualObjects(tf.text, textField.text,@"Text should be set from property");
+    XCTAssertEqualObjects(tf.placeholder, textField.placeholder,@"Placeholder should be set from property");
+    XCTAssertEqualObjects(tf.textColor, textField.textColor,@"TextColor should be set from property");
+    XCTAssertEqualObjects(tf.font, textField.font,@"Font should be set from property");
+}
 
+-(void)testThatTextFieldGettersWorkWhenTextFieldNotAwakeFromNib{
+    textField.text = @"Test";
+    textField.placeholder = @"Placeholder";
+    textField.font = [UIFont boldSystemFontOfSize:11];
+    textField.textColor = [UIColor redColor];
+    
+    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+}
+
+-(void)testThatTextFieldGettersWorkWhenTextFieldAwakeFromNib{
+    textField.text = @"Test";
+    textField.placeholder = @"Placeholder";
+    textField.font = [UIFont boldSystemFontOfSize:11];
+    textField.textColor = [UIColor redColor];
+    
+    [textField awakeFromNib];
+    
+    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+}
+
+-(void)testThatTextFieldSettersUpdateTheTextField{
+    textField.text = @"Test";
+    textField.placeholder = @"Placeholder";
+    textField.font = [UIFont boldSystemFontOfSize:11];
+    textField.textColor = [UIColor redColor];
+    
+    [textField awakeFromNib];
+    
+    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+    
+    textField.text = @"Test2";
+    textField.placeholder = @"Placeholder2";
+    textField.font = [UIFont boldSystemFontOfSize:22];
+    textField.textColor = [UIColor greenColor];
+    
+    UITextField *tf = [textField valueForKey:@"textField"];
+    
+    XCTAssertEqualObjects(tf.text,@"Test2",@"Text should be updated from property");
+    XCTAssertEqualObjects(tf.placeholder,@"Placeholder2",@"Placeholder should be updated from property");
+    XCTAssertEqualObjects(tf.textColor,[UIColor greenColor],@"TextColor should be updated from property");
+    XCTAssertEqualObjects(tf.font,[UIFont boldSystemFontOfSize:22],@"Font should be updated from property");
+}
 
 @end

@@ -10,6 +10,7 @@
 
 @interface DPBorderIconTextField : UIView{
     UIImageView *iconImageView;
+    UITextField *textField;
 }
 
 @property (nonatomic) BOOL hasBorder;
@@ -22,5 +23,10 @@
 
 @property (nonatomic) UIImage *icon;
 @property (nonatomic) NSInteger iconLeftInset;
+
+@property (nonatomic) UIFont *font;
+@property (nonatomic) NSString *placeholder;
+@property (nonatomic) NSString *text;
+@property (nonatomic) UIColor *textColor;
 
 @end
