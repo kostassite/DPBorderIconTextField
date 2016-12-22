@@ -16,6 +16,10 @@
 		2EC1D1181E0C25A80087A8B1 /* DPBorderIconTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D1171E0C25A80087A8B1 /* DPBorderIconTextField.m */; };
 		2EC1D11C1E0C26560087A8B1 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D11A1E0C26560087A8B1 /* DummyViewController.m */; };
 		2EC1D11D1E0C26560087A8B1 /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */; };
+		2EC1D1201E0C2D430087A8B1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D11F1E0C2D430087A8B1 /* lock.png */; };
+		2EC1D1211E0C2D430087A8B1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D11F1E0C2D430087A8B1 /* lock.png */; };
+		2EC1D1231E0C2F820087A8B1 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D1221E0C2F820087A8B1 /* unlock.png */; };
+		2EC1D1241E0C2F820087A8B1 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D1221E0C2F820087A8B1 /* unlock.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,8 @@
 		2EC1D1191E0C26560087A8B1 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
 		2EC1D11A1E0C26560087A8B1 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
 		2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
+		2EC1D11F1E0C2D430087A8B1 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		2EC1D1221E0C2F820087A8B1 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 		2EC1D0E11E0C25670087A8B1 /* DPBorderIconTextField */ = {
 			isa = PBXGroup;
 			children = (
+				2EC1D11F1E0C2D430087A8B1 /* lock.png */,
+				2EC1D1221E0C2F820087A8B1 /* unlock.png */,
 				2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */,
 				2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */,
 				2EC1D11E1E0C265E0087A8B1 /* DummyViewController */,
@@ -270,6 +278,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC1D1201E0C2D430087A8B1 /* lock.png in Resources */,
+				2EC1D1231E0C2F820087A8B1 /* unlock.png in Resources */,
 				2EC1D0F21E0C25670087A8B1 /* LaunchScreen.storyboard in Resources */,
 				2EC1D11D1E0C26560087A8B1 /* DummyViewController.xib in Resources */,
 				2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */,
@@ -280,6 +290,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC1D1211E0C2D430087A8B1 /* lock.png in Resources */,
+				2EC1D1241E0C2F820087A8B1 /* unlock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

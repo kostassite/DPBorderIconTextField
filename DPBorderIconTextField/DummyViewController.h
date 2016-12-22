@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DPBorderIconTextField.h"
 
-@interface DummyViewController : UIViewController
+@interface DummyViewController : UIViewController{
+    
+}
+
+@property (weak, nonatomic) IBOutlet DPBorderIconTextField *borderIconTextField;
 
 @end

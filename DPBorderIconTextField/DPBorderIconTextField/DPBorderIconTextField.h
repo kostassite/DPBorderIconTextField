@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DPBorderIconTextField : UIView
+@interface DPBorderIconTextField : UIView{
+    UIImageView *iconImageView;
+}
+
+@property (nonatomic) BOOL hasBorder;
+
+@property (nonatomic) NSInteger borderWidth;
+
+@property (nonatomic) BOOL hasRoundedCorners;
+
+@property (nonatomic) UIColor *borderColor;
+
+@property (nonatomic) UIImage *icon;
+@property (nonatomic) NSInteger iconLeftInset;
 
 @end
