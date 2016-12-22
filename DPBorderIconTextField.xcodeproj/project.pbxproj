@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		2EC1D0E41E0C25670087A8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E31E0C25670087A8B1 /* main.m */; };
 		2EC1D0E71E0C25670087A8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */; };
-		2EC1D0EA1E0C25670087A8B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E91E0C25670087A8B1 /* ViewController.m */; };
-		2EC1D0ED1E0C25670087A8B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D0EB1E0C25670087A8B1 /* Main.storyboard */; };
 		2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */; };
 		2EC1D0F21E0C25670087A8B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D0F01E0C25670087A8B1 /* LaunchScreen.storyboard */; };
 		2EC1D0FD1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0FC1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m */; };
 		2EC1D1081E0C25670087A8B1 /* DPBorderIconTextFieldUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D1071E0C25670087A8B1 /* DPBorderIconTextFieldUITests.m */; };
+		2EC1D1181E0C25A80087A8B1 /* DPBorderIconTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D1171E0C25A80087A8B1 /* DPBorderIconTextField.m */; };
+		2EC1D11C1E0C26560087A8B1 /* DummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D11A1E0C26560087A8B1 /* DummyViewController.m */; };
+		2EC1D11D1E0C26560087A8B1 /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +40,6 @@
 		2EC1D0E31E0C25670087A8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2EC1D0E81E0C25670087A8B1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2EC1D0E91E0C25670087A8B1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2EC1D0EC1E0C25670087A8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EC1D0F11E0C25670087A8B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EC1D0F31E0C25670087A8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +49,11 @@
 		2EC1D1031E0C25670087A8B1 /* DPBorderIconTextFieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DPBorderIconTextFieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC1D1071E0C25670087A8B1 /* DPBorderIconTextFieldUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPBorderIconTextFieldUITests.m; sourceTree = "<group>"; };
 		2EC1D1091E0C25670087A8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EC1D1161E0C25A80087A8B1 /* DPBorderIconTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPBorderIconTextField.h; sourceTree = "<group>"; };
+		2EC1D1171E0C25A80087A8B1 /* DPBorderIconTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBorderIconTextField.m; sourceTree = "<group>"; };
+		2EC1D1191E0C26560087A8B1 /* DummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyViewController.h; sourceTree = "<group>"; };
+		2EC1D11A1E0C26560087A8B1 /* DummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyViewController.m; sourceTree = "<group>"; };
+		2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +106,8 @@
 			children = (
 				2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */,
 				2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */,
-				2EC1D0E81E0C25670087A8B1 /* ViewController.h */,
-				2EC1D0E91E0C25670087A8B1 /* ViewController.m */,
-				2EC1D0EB1E0C25670087A8B1 /* Main.storyboard */,
+				2EC1D11E1E0C265E0087A8B1 /* DummyViewController */,
+				2EC1D1151E0C25880087A8B1 /* DPBorderIconTextField */,
 				2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */,
 				2EC1D0F01E0C25670087A8B1 /* LaunchScreen.storyboard */,
 				2EC1D0F31E0C25670087A8B1 /* Info.plist */,
@@ -138,6 +140,25 @@
 				2EC1D1091E0C25670087A8B1 /* Info.plist */,
 			);
 			path = DPBorderIconTextFieldUITests;
+			sourceTree = "<group>";
+		};
+		2EC1D1151E0C25880087A8B1 /* DPBorderIconTextField */ = {
+			isa = PBXGroup;
+			children = (
+				2EC1D1161E0C25A80087A8B1 /* DPBorderIconTextField.h */,
+				2EC1D1171E0C25A80087A8B1 /* DPBorderIconTextField.m */,
+			);
+			path = DPBorderIconTextField;
+			sourceTree = "<group>";
+		};
+		2EC1D11E1E0C265E0087A8B1 /* DummyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2EC1D1191E0C26560087A8B1 /* DummyViewController.h */,
+				2EC1D11A1E0C26560087A8B1 /* DummyViewController.m */,
+				2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */,
+			);
+			name = DummyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC1D0F21E0C25670087A8B1 /* LaunchScreen.storyboard in Resources */,
+				2EC1D11D1E0C26560087A8B1 /* DummyViewController.xib in Resources */,
 				2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */,
-				2EC1D0ED1E0C25670087A8B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,9 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC1D0EA1E0C25670087A8B1 /* ViewController.m in Sources */,
 				2EC1D0E71E0C25670087A8B1 /* AppDelegate.m in Sources */,
+				2EC1D1181E0C25A80087A8B1 /* DPBorderIconTextField.m in Sources */,
 				2EC1D0E41E0C25670087A8B1 /* main.m in Sources */,
+				2EC1D11C1E0C26560087A8B1 /* DummyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,14 +336,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2EC1D0EB1E0C25670087A8B1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2EC1D0EC1E0C25670087A8B1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2EC1D0F01E0C25670087A8B1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

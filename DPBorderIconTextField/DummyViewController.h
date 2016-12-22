@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DummyViewController.h
 //  DPBorderIconTextField
 //
 //  Created by Kostas on 22/12/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface DummyViewController : UIViewController
 
 @end
-

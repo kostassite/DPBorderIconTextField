@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DummyViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    DummyViewController *dummyVC = [[DummyViewController alloc]init];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window setRootViewController:dummyVC];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
