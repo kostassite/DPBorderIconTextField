@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL hasRoundedCorners;
 
 @property (nonatomic) UIColor *borderColor;
+@property (nonatomic) UIColor *borderColorActive;
 
 @property (nonatomic) UIImage *icon;
 @property (nonatomic) NSInteger iconLeftInset;

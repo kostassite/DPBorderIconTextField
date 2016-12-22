@@ -8,34 +8,54 @@
 
 #import "DPBorderIconTextField.h"
 
+@interface DPBorderIconTextField ()<UITextFieldDelegate>{
+    
+}
+
+@end
+
 @implementation DPBorderIconTextField
 @synthesize text = _text;
 @synthesize font = _font;
 @synthesize textColor = _textColor;
 @synthesize placeholder = _placeholder;
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        self.hasBorder = YES;
-        self.borderWidth = 1;
-        self.borderColor = [UIColor blackColor];
-        self.hasRoundedCorners = YES;
-        self.iconLeftInset = 18;
-        self.icon = [UIImage imageNamed:@"unlock"];
-        
-        self.text = @"";
-        self.placeholder = @"Add text";
-        self.textColor = [UIColor blackColor];
-        self.font = [UIFont systemFontOfSize:17];
+-(id)init{
+    if (self = [super init]) {
+        [self loadDefaultValues];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self loadDefaultValues];
+    }
+    return self;
+}
+
+-(void)loadDefaultValues{
+    self.hasBorder = YES;
+    self.borderWidth = 1;
+    self.borderColor = [UIColor blackColor];
+    self.borderColorActive = [UIColor blueColor];
+    
+    self.hasRoundedCorners = YES;
+    self.iconLeftInset = 18;
+    self.icon = [UIImage imageNamed:@"unlock"];
+    
+    self.text = @"";
+    self.placeholder = @"Add text";
+    self.textColor = [UIColor blackColor];
+    self.font = [UIFont systemFontOfSize:17];
 }
 
 -(void)awakeFromNib{
     [self setupRoundedCorners];
     [self setupBorder];
     [self setupIcon];
-    [self settupTextField];
+    [self setupTextField];
+    
     [super awakeFromNib];
 }
 
@@ -64,12 +84,15 @@
     [self addSubview:iconImageView];
 }
 
--(void)settupTextField{
+-(void)setupTextField{
     textField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) + 15, self.frame.size.height - 4)];
     textField.placeholder = _placeholder;
     textField.text = _text;
     textField.textColor = _textColor;
     textField.font = _font;
+    textField.delegate = self;
+    
+    [self updateBorderColorBasedOnTextLength];
     
     [self addSubview:textField];
 }
@@ -79,6 +102,7 @@
 -(void)setText:(NSString *)text{
     _text = text;
     textField.text = text;
+    [self updateBorderColorBasedOnTextLength];
 }
 
 -(NSString*)text{
@@ -122,6 +146,44 @@
         return textField.font;
     }
     return _font;
+}
+
+-(void)updateBorderColorBasedOnTextLength{
+    if (textField.text.length>0) {
+        self.layer.borderColor = self.borderColorActive.CGColor;
+    }else{
+        self.layer.borderColor = self.borderColor.CGColor;
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)tf{
+    self.layer.borderColor = self.borderColorActive.CGColor;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self updateBorderColorBasedOnTextLength];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return YES;
 }
 
 @end

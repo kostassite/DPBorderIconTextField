@@ -10,7 +10,7 @@
 #import "DPBorderIconTextField.h"
 
 @interface DPBorderIconTextFieldTests : XCTestCase{
-    DPBorderIconTextField *textField;
+    DPBorderIconTextField<UITextFieldDelegate> *borderIconTextField;
 }
 
 @end
@@ -19,150 +19,232 @@
 
 - (void)setUp {
     [super setUp];
-    textField = [[DPBorderIconTextField alloc]init];
+    borderIconTextField = [[DPBorderIconTextField alloc]init];
 
 }
 
 - (void)tearDown {
-    textField = nil;
+    borderIconTextField = nil;
     [super tearDown];
 }
 
+#pragma mark - Border
+
 -(void)testThatBorderIsNotShownWhenHasBorderIsNo{
-    textField.hasBorder = NO;
-    [textField awakeFromNib];
+    borderIconTextField.hasBorder = NO;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqual(textField.layer.borderWidth, 0,@"Border width should be 0 when hasBorder is NO");
+    XCTAssertEqual(borderIconTextField.layer.borderWidth, 0,@"Border width should be 0 when hasBorder is NO");
 }
 
 -(void)testThatBorderIsShownWhenHasBorderIsYes{
-    textField.borderWidth = 2;
-    textField.hasBorder = YES;
-    [textField awakeFromNib];
+    borderIconTextField.borderWidth = 2;
+    borderIconTextField.hasBorder = YES;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertGreaterThan(textField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
+    XCTAssertGreaterThan(borderIconTextField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
 }
 
 -(void)testThatBorderWidthIsNotZeroWhenHasBorderIsYes{
-    textField.borderWidth = 0;
-    textField.hasBorder = YES;
-    [textField awakeFromNib];
+    borderIconTextField.borderWidth = 0;
+    borderIconTextField.hasBorder = YES;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertGreaterThan(textField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
+    XCTAssertGreaterThan(borderIconTextField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
 }
 
 -(void)testThatBorderWidthIsSetFromProperty{
-    textField.borderWidth = 10;
-    textField.hasBorder = YES;
-    [textField awakeFromNib];
+    borderIconTextField.borderWidth = 10;
+    borderIconTextField.hasBorder = YES;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqual(textField.layer.borderWidth, textField.borderWidth,@"Border width of layer should be equal to the property");
+    XCTAssertEqual(borderIconTextField.layer.borderWidth, borderIconTextField.borderWidth,@"Border width of layer should be equal to the property");
 }
 
 -(void)testThatHasRoundedCornerWhenPropertyIsYes{
-    textField.hasRoundedCorners = YES;
-    [textField awakeFromNib];
+    borderIconTextField.hasRoundedCorners = YES;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqual(textField.layer.cornerRadius, textField.frame.size.height/2,@"Corner radius should be equal to height/2");
+    XCTAssertEqual(borderIconTextField.layer.cornerRadius, borderIconTextField.frame.size.height/2,@"Corner radius should be equal to height/2");
 }
 
 -(void)testThatDoesntHasRoundedCornerWhenPropertyIsNo{
-    textField.hasRoundedCorners = NO;
-    [textField awakeFromNib];
+    borderIconTextField.hasRoundedCorners = NO;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqual(textField.layer.cornerRadius, 0,@"Corner radius should be equal to 0");
+    XCTAssertEqual(borderIconTextField.layer.cornerRadius, 0,@"Corner radius should be equal to 0");
 }
 
 -(void)testThatBorderColorIsSameAsProperty{
-    textField.hasBorder = YES;
-    textField.borderColor = [UIColor redColor];
-    [textField awakeFromNib];
+    borderIconTextField.hasBorder = YES;
+    borderIconTextField.borderColor = [UIColor redColor];
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqualObjects([UIColor colorWithCGColor:textField.layer.borderColor], textField.borderColor,@"Border color should be the same as property");
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the same as property");
 }
 
+#pragma mark - Icon
+
 -(void)testThatIconIsSetCorrectIntoTheImageView{
-    textField.icon = [UIImage imageNamed:@"lock"];
-    [textField awakeFromNib];
+    borderIconTextField.icon = [UIImage imageNamed:@"lock"];
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqualObjects([[textField valueForKey:@"iconImageView"] image], textField.icon);
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], borderIconTextField.icon);
 }
 
 -(void)testThatIconImageViewHasCorrectInset{
-    textField.icon = [UIImage imageNamed:@"lock"];
-    textField.iconLeftInset = 10;
-    [textField awakeFromNib];
+    borderIconTextField.icon = [UIImage imageNamed:@"lock"];
+    borderIconTextField.iconLeftInset = 10;
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqual([[textField valueForKey:@"iconImageView"] frame].origin.x, textField.iconLeftInset);
+    XCTAssertEqual([[borderIconTextField valueForKey:@"iconImageView"] frame].origin.x, borderIconTextField.iconLeftInset);
 }
+
+#pragma mark - TextField
 
 -(void)testThatTextFieldIsInitWithCorrectValues{
     
-    textField.text = @"Test";
-    textField.placeholder = @"Placeholder";
-    textField.font = [UIFont boldSystemFontOfSize:11];
-    textField.textColor = [UIColor redColor];
+    borderIconTextField.text = @"Test";
+    borderIconTextField.placeholder = @"Placeholder";
+    borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
+    borderIconTextField.textColor = [UIColor redColor];
     
-    [textField awakeFromNib];
+    [borderIconTextField awakeFromNib];
     
-    UITextField *tf = [textField valueForKey:@"textField"];
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
-    XCTAssertEqualObjects(tf.text, textField.text,@"Text should be set from property");
-    XCTAssertEqualObjects(tf.placeholder, textField.placeholder,@"Placeholder should be set from property");
-    XCTAssertEqualObjects(tf.textColor, textField.textColor,@"TextColor should be set from property");
-    XCTAssertEqualObjects(tf.font, textField.font,@"Font should be set from property");
+    XCTAssertEqualObjects(tf.text, borderIconTextField.text,@"Text should be set from property");
+    XCTAssertEqualObjects(tf.placeholder, borderIconTextField.placeholder,@"Placeholder should be set from property");
+    XCTAssertEqualObjects(tf.textColor, borderIconTextField.textColor,@"TextColor should be set from property");
+    XCTAssertEqualObjects(tf.font, borderIconTextField.font,@"Font should be set from property");
 }
 
 -(void)testThatTextFieldGettersWorkWhenTextFieldNotAwakeFromNib{
-    textField.text = @"Test";
-    textField.placeholder = @"Placeholder";
-    textField.font = [UIFont boldSystemFontOfSize:11];
-    textField.textColor = [UIColor redColor];
+    borderIconTextField.text = @"Test";
+    borderIconTextField.placeholder = @"Placeholder";
+    borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
+    borderIconTextField.textColor = [UIColor redColor];
     
-    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
-    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
-    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
-    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
 }
 
 -(void)testThatTextFieldGettersWorkWhenTextFieldAwakeFromNib{
-    textField.text = @"Test";
-    textField.placeholder = @"Placeholder";
-    textField.font = [UIFont boldSystemFontOfSize:11];
-    textField.textColor = [UIColor redColor];
+    borderIconTextField.text = @"Test";
+    borderIconTextField.placeholder = @"Placeholder";
+    borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
+    borderIconTextField.textColor = [UIColor redColor];
     
-    [textField awakeFromNib];
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
-    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
-    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
-    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
 }
 
 -(void)testThatTextFieldSettersUpdateTheTextField{
-    textField.text = @"Test";
-    textField.placeholder = @"Placeholder";
-    textField.font = [UIFont boldSystemFontOfSize:11];
-    textField.textColor = [UIColor redColor];
+    borderIconTextField.text = @"Test";
+    borderIconTextField.placeholder = @"Placeholder";
+    borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
+    borderIconTextField.textColor = [UIColor redColor];
     
-    [textField awakeFromNib];
+    [borderIconTextField awakeFromNib];
     
-    XCTAssertEqualObjects(textField.text,@"Test",@"Text should be set from property");
-    XCTAssertEqualObjects(textField.placeholder,@"Placeholder",@"Placeholder should be set from property");
-    XCTAssertEqualObjects(textField.textColor,[UIColor redColor],@"TextColor should be set from property");
-    XCTAssertEqualObjects(textField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.text,@"Test",@"Text should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.placeholder,@"Placeholder",@"Placeholder should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.textColor,[UIColor redColor],@"TextColor should be set from property");
+    XCTAssertEqualObjects(borderIconTextField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
     
-    textField.text = @"Test2";
-    textField.placeholder = @"Placeholder2";
-    textField.font = [UIFont boldSystemFontOfSize:22];
-    textField.textColor = [UIColor greenColor];
+    borderIconTextField.text = @"Test2";
+    borderIconTextField.placeholder = @"Placeholder2";
+    borderIconTextField.font = [UIFont boldSystemFontOfSize:22];
+    borderIconTextField.textColor = [UIColor greenColor];
     
-    UITextField *tf = [textField valueForKey:@"textField"];
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
     XCTAssertEqualObjects(tf.text,@"Test2",@"Text should be updated from property");
     XCTAssertEqualObjects(tf.placeholder,@"Placeholder2",@"Placeholder should be updated from property");
     XCTAssertEqualObjects(tf.textColor,[UIColor greenColor],@"TextColor should be updated from property");
     XCTAssertEqualObjects(tf.font,[UIFont boldSystemFontOfSize:22],@"Font should be updated from property");
+}
+
+#pragma mark - TextField Border change
+
+-(void)testBorderColorStartsNotActiveWhenHasNoText{
+    borderIconTextField.text = @"";
+    [borderIconTextField awakeFromNib];
+
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the non active");
+}
+
+-(void)testBorderColorStartsActiveWhenHasText{
+    borderIconTextField.text = @"Has Text";
+    [borderIconTextField awakeFromNib];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
+}
+
+-(void)testBorderColorChangesToActiveWhenSetText{
+    borderIconTextField.text = @"";
+    [borderIconTextField awakeFromNib];
+    borderIconTextField.text = @"Has Text";
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
+}
+
+-(void)testBorderColorChangesToInactiveWhenDeleteText{
+    borderIconTextField.text = @"Has Text";
+    [borderIconTextField awakeFromNib];
+    borderIconTextField.text = @"";
+
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the non active");
+}
+
+-(void)testBorderColorChangesToActiveWhenBeginEditing{
+    borderIconTextField.text = @"";
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+
+    [borderIconTextField textFieldDidBeginEditing:tf];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
+}
+
+-(void)testBorderColorStaysActiveWhenBeginEditingAndHasAlreadyText{
+    borderIconTextField.text = @"Has Text";
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidBeginEditing:tf];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
+}
+
+-(void)testBorderColorChangesToInactiveWhenEndEditingAndHasNoText{
+    borderIconTextField.text = @"";
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the non active");
+}
+
+-(void)testBorderColorStaysActiveWhenEndEditingAndHasText{
+    borderIconTextField.text = @"Has Text";
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
 }
 
 @end
