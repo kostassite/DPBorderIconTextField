@@ -19,8 +19,8 @@
 
 @property (nonatomic) BOOL hasRoundedCorners;
 
-@property (nonatomic) UIColor *borderColor;
-@property (nonatomic) UIColor *borderColorActive;
+@property (nonatomic,strong) UIColor *borderColor;
+@property (nonatomic,strong) UIColor *borderColorActive;
 
 @property (nonatomic,strong) UIImage *icon;
 @property (nonatomic) NSInteger iconLeftInset;
@@ -29,5 +29,7 @@
 @property (nonatomic,strong) NSString *placeholder;
 @property (nonatomic,strong) NSString *text;
 @property (nonatomic,strong) UIColor *textColor;
+
+@property (nonatomic,weak) id<UITextFieldDelegate> textFieldDelegate;
 
 @end

@@ -158,32 +158,34 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    return YES;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)tf{
+    return [self.textFieldDelegate textFieldShouldBeginEditing:tf];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)tf{
     self.layer.borderColor = self.borderColorActive.CGColor;
+    [self.textFieldDelegate textFieldDidBeginEditing:tf];
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    return YES;
+- (BOOL)textFieldShouldEndEditing:(UITextField *)tf{
+    return [self.textFieldDelegate textFieldShouldEndEditing:tf];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+- (void)textFieldDidEndEditing:(UITextField *)tf{
     [self updateBorderColorBasedOnTextLength];
+    [self.textFieldDelegate textFieldDidEndEditing:tf];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    return YES;
+- (BOOL)textField:(UITextField *)tf shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    return [self.textFieldDelegate textField:tf shouldChangeCharactersInRange:range replacementString:string];
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField{
-    return YES;
+- (BOOL)textFieldShouldClear:(UITextField *)tf{
+    return [self.textFieldDelegate textFieldShouldClear:tf];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    return YES;
+- (BOOL)textFieldShouldReturn:(UITextField *)tf{
+    return [self.textFieldDelegate textFieldShouldReturn:tf];
 }
 
 @end

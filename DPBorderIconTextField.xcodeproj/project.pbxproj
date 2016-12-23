@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D85FCF91EEEE2A197425CEA /* libPods-DPBorderIconTextField.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E75D9DA1C9590096FF419F30 /* libPods-DPBorderIconTextField.a */; };
+		2BC973F17A0B3A9D2C23D028 /* libPods-DPBorderIconTextFieldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5254B3BDF4C3D3E2EE3DEE /* libPods-DPBorderIconTextFieldTests.a */; };
 		2EC1D0E41E0C25670087A8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E31E0C25670087A8B1 /* main.m */; };
 		2EC1D0E71E0C25670087A8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */; };
 		2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */; };
@@ -20,6 +22,7 @@
 		2EC1D1211E0C2D430087A8B1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D11F1E0C2D430087A8B1 /* lock.png */; };
 		2EC1D1231E0C2F820087A8B1 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D1221E0C2F820087A8B1 /* unlock.png */; };
 		2EC1D1241E0C2F820087A8B1 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D1221E0C2F820087A8B1 /* unlock.png */; };
+		515E4F834247423D61ED7A6C /* libPods-DPBorderIconTextFieldUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64B8DAAF7D1EADDEFD14DE2 /* libPods-DPBorderIconTextFieldUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05224047A244B482805717AE /* Pods-DPBorderIconTextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField.release.xcconfig"; sourceTree = "<group>"; };
+		0F0938318B943C5AF78EEDAA /* Pods-DPBorderIconTextFieldUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextFieldUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2EC1D0DF1E0C25670087A8B1 /* DPBorderIconTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPBorderIconTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC1D0E31E0C25670087A8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +65,13 @@
 		2EC1D11B1E0C26560087A8B1 /* DummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 		2EC1D11F1E0C2D430087A8B1 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		2EC1D1221E0C2F820087A8B1 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
+		34E31E85FEEDDD851D5CBE0E /* Pods-DPBorderIconTextFieldUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextFieldUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6B5254B3BDF4C3D3E2EE3DEE /* libPods-DPBorderIconTextFieldTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DPBorderIconTextFieldTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91F82CEAE7DEDF1EE586E8FB /* Pods-DPBorderIconTextFieldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB9630C90BF49EAB8344ED6B /* Pods-DPBorderIconTextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField.debug.xcconfig"; sourceTree = "<group>"; };
+		D64B8DAAF7D1EADDEFD14DE2 /* libPods-DPBorderIconTextFieldUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DPBorderIconTextFieldUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6977EA5F24CD1199258F9F1 /* Pods-DPBorderIconTextFieldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E75D9DA1C9590096FF419F30 /* libPods-DPBorderIconTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DPBorderIconTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D85FCF91EEEE2A197425CEA /* libPods-DPBorderIconTextField.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC973F17A0B3A9D2C23D028 /* libPods-DPBorderIconTextFieldTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +95,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515E4F834247423D61ED7A6C /* libPods-DPBorderIconTextFieldUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12FBB35A0FC920FED91DBA2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB9630C90BF49EAB8344ED6B /* Pods-DPBorderIconTextField.debug.xcconfig */,
+				05224047A244B482805717AE /* Pods-DPBorderIconTextField.release.xcconfig */,
+				E6977EA5F24CD1199258F9F1 /* Pods-DPBorderIconTextFieldTests.debug.xcconfig */,
+				91F82CEAE7DEDF1EE586E8FB /* Pods-DPBorderIconTextFieldTests.release.xcconfig */,
+				34E31E85FEEDDD851D5CBE0E /* Pods-DPBorderIconTextFieldUITests.debug.xcconfig */,
+				0F0938318B943C5AF78EEDAA /* Pods-DPBorderIconTextFieldUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2EC1D0D61E0C25670087A8B1 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +122,8 @@
 				2EC1D0FB1E0C25670087A8B1 /* DPBorderIconTextFieldTests */,
 				2EC1D1061E0C25670087A8B1 /* DPBorderIconTextFieldUITests */,
 				2EC1D0E01E0C25670087A8B1 /* Products */,
+				12FBB35A0FC920FED91DBA2F /* Pods */,
+				35871A95E3D40E8A9EB01E90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +199,16 @@
 			name = DummyViewController;
 			sourceTree = "<group>";
 		};
+		35871A95E3D40E8A9EB01E90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E75D9DA1C9590096FF419F30 /* libPods-DPBorderIconTextField.a */,
+				6B5254B3BDF4C3D3E2EE3DEE /* libPods-DPBorderIconTextFieldTests.a */,
+				D64B8DAAF7D1EADDEFD14DE2 /* libPods-DPBorderIconTextFieldUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EC1D10C1E0C25670087A8B1 /* Build configuration list for PBXNativeTarget "DPBorderIconTextField" */;
 			buildPhases = (
+				5E342D7297614AFDF6C40EA4 /* [CP] Check Pods Manifest.lock */,
 				2EC1D0DB1E0C25670087A8B1 /* Sources */,
 				2EC1D0DC1E0C25670087A8B1 /* Frameworks */,
 				2EC1D0DD1E0C25670087A8B1 /* Resources */,
+				9FC3E77043E68464DCE5BB5E /* [CP] Embed Pods Frameworks */,
+				DE9245E7480F90F3B3E7A59E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EC1D10F1E0C25670087A8B1 /* Build configuration list for PBXNativeTarget "DPBorderIconTextFieldTests" */;
 			buildPhases = (
+				AEFC03CC44D0323DDFFCC248 /* [CP] Check Pods Manifest.lock */,
 				2EC1D0F41E0C25670087A8B1 /* Sources */,
 				2EC1D0F51E0C25670087A8B1 /* Frameworks */,
 				2EC1D0F61E0C25670087A8B1 /* Resources */,
+				3596FF8119F35297DEA6F664 /* [CP] Embed Pods Frameworks */,
+				41D8D1F2C924ECABFC05E185 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,9 +257,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EC1D1121E0C25670087A8B1 /* Build configuration list for PBXNativeTarget "DPBorderIconTextFieldUITests" */;
 			buildPhases = (
+				5FC9EBCD3E2630E9E73413DC /* [CP] Check Pods Manifest.lock */,
 				2EC1D0FF1E0C25670087A8B1 /* Sources */,
 				2EC1D1001E0C25670087A8B1 /* Frameworks */,
 				2EC1D1011E0C25670087A8B1 /* Resources */,
+				D3AFCB0DE2E2C7BDF3C37945 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,6 +351,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3596FF8119F35297DEA6F664 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41D8D1F2C924ECABFC05E185 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E342D7297614AFDF6C40EA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5FC9EBCD3E2630E9E73413DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9FC3E77043E68464DCE5BB5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEFC03CC44D0323DDFFCC248 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3AFCB0DE2E2C7BDF3C37945 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextFieldUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE9245E7480F90F3B3E7A59E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2EC1D0DB1E0C25670087A8B1 /* Sources */ = {
@@ -449,6 +620,7 @@
 		};
 		2EC1D10D1E0C25670087A8B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB9630C90BF49EAB8344ED6B /* Pods-DPBorderIconTextField.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TK39262Y4K;
@@ -461,6 +633,7 @@
 		};
 		2EC1D10E1E0C25670087A8B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05224047A244B482805717AE /* Pods-DPBorderIconTextField.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TK39262Y4K;
@@ -473,6 +646,7 @@
 		};
 		2EC1D1101E0C25670087A8B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6977EA5F24CD1199258F9F1 /* Pods-DPBorderIconTextFieldTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TK39262Y4K;
@@ -486,6 +660,7 @@
 		};
 		2EC1D1111E0C25670087A8B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91F82CEAE7DEDF1EE586E8FB /* Pods-DPBorderIconTextFieldTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = TK39262Y4K;
@@ -499,6 +674,7 @@
 		};
 		2EC1D1131E0C25670087A8B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E31E85FEEDDD851D5CBE0E /* Pods-DPBorderIconTextFieldUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = TK39262Y4K;
 				INFOPLIST_FILE = DPBorderIconTextFieldUITests/Info.plist;
@@ -511,6 +687,7 @@
 		};
 		2EC1D1141E0C25670087A8B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0938318B943C5AF78EEDAA /* Pods-DPBorderIconTextFieldUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = TK39262Y4K;
 				INFOPLIST_FILE = DPBorderIconTextFieldUITests/Info.plist;
@@ -540,6 +717,7 @@
 				2EC1D10E1E0C25670087A8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EC1D10F1E0C25670087A8B1 /* Build configuration list for PBXNativeTarget "DPBorderIconTextFieldTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +726,7 @@
 				2EC1D1111E0C25670087A8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EC1D1121E0C25670087A8B1 /* Build configuration list for PBXNativeTarget "DPBorderIconTextFieldUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +735,7 @@
 				2EC1D1141E0C25670087A8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
