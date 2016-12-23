@@ -22,12 +22,12 @@
 @property (nonatomic) UIColor *borderColor;
 @property (nonatomic) UIColor *borderColorActive;
 
-@property (nonatomic) UIImage *icon;
+@property (nonatomic,strong) UIImage *icon;
 @property (nonatomic) NSInteger iconLeftInset;
 
-@property (nonatomic) UIFont *font;
-@property (nonatomic) NSString *placeholder;
-@property (nonatomic) NSString *text;
-@property (nonatomic) UIColor *textColor;
+@property (nonatomic,strong) UIFont *font;
+@property (nonatomic,strong) NSString *placeholder;
+@property (nonatomic,strong) NSString *text;
+@property (nonatomic,strong) UIColor *textColor;
 
 @end
