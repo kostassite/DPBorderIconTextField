@@ -159,32 +159,51 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)tf{
+    if (!self.textFieldDelegate || ![self.textFieldDelegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
+        return YES;
+    }
     return [self.textFieldDelegate textFieldShouldBeginEditing:tf];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)tf{
     self.layer.borderColor = self.borderColorActive.CGColor;
-    [self.textFieldDelegate textFieldDidBeginEditing:tf];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+        [self.textFieldDelegate textFieldDidBeginEditing:tf];
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)tf{
+    if (!self.textFieldDelegate || ![self.textFieldDelegate respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
+        return YES;
+    }
     return [self.textFieldDelegate textFieldShouldEndEditing:tf];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)tf{
     [self updateBorderColorBasedOnTextLength];
-    [self.textFieldDelegate textFieldDidEndEditing:tf];
+    if ([self.textFieldDelegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+        [self.textFieldDelegate textFieldDidEndEditing:tf];
+    }
 }
 
 - (BOOL)textField:(UITextField *)tf shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (!self.textFieldDelegate || ![self.textFieldDelegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+        return YES;
+    }
     return [self.textFieldDelegate textField:tf shouldChangeCharactersInRange:range replacementString:string];
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)tf{
+    if (!self.textFieldDelegate || ![self.textFieldDelegate respondsToSelector:@selector(textFieldShouldClear:)]) {
+        return YES;
+    }
     return [self.textFieldDelegate textFieldShouldClear:tf];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)tf{
+    if (!self.textFieldDelegate || ![self.textFieldDelegate respondsToSelector:@selector(textFieldShouldReturn:)]) {
+        return YES;
+    }
     return [self.textFieldDelegate textFieldShouldReturn:tf];
 }
 

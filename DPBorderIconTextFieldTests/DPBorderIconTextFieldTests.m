@@ -357,4 +357,83 @@
     XCTAssertEqual(v, NO);
 }
 
+-(void)testThatTextFieldRealDelegateMethodsReturnYesWhenNoDelegate{
+    id protocolMock = OCMProtocolMock(@protocol(UITextFieldDelegate));
+    
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    NSRange r = NSMakeRange(10, 1);
+    NSString *repStr = @"Str";
+    
+    OCMStub([protocolMock textField:tf shouldChangeCharactersInRange:r replacementString:repStr]).andReturn(YES);
+    OCMStub([protocolMock textFieldShouldClear:tf]).andReturn(YES);
+    OCMStub([protocolMock textFieldShouldReturn:tf]).andReturn(YES);
+    OCMStub([protocolMock textFieldShouldBeginEditing:tf]).andReturn(YES);
+    OCMStub([protocolMock textFieldShouldEndEditing:tf]).andReturn(YES);
+    
+    
+    BOOL v = [borderIconTextField textFieldShouldClear:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldReturn:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldBeginEditing:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldEndEditing:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textField:tf shouldChangeCharactersInRange:r replacementString:repStr];
+    XCTAssertEqual(v, YES);
+}
+
+-(void)testThatTextFieldRealDelegateMethodsReturnYesWhenDelegateNotImplementedMethod{
+    id emptyDelegate = OCMClassMock([NSObject class]);
+    [borderIconTextField setTextFieldDelegate:emptyDelegate];
+
+    [borderIconTextField awakeFromNib];
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    NSRange r = NSMakeRange(10, 1);
+    NSString *repStr = @"Str";
+    
+    BOOL v = [borderIconTextField textFieldShouldClear:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldReturn:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldBeginEditing:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textFieldShouldEndEditing:tf];
+    XCTAssertEqual(v, YES);
+    
+    v = [borderIconTextField textField:tf shouldChangeCharactersInRange:r replacementString:repStr];
+    XCTAssertEqual(v, YES);
+}
+
+-(void)testThatTextFieldRealDelegateNotCallDelegateMethodsThatAreNotImplemented{
+    id emptyDelegate = OCMStrictClassMock([NSObject class]);
+    [borderIconTextField setTextFieldDelegate:emptyDelegate];
+    
+    [borderIconTextField awakeFromNib];
+
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidBeginEditing:tf];
+    [borderIconTextField textFieldDidEndEditing:tf];
+    [borderIconTextField textFieldShouldBeginEditing:tf];
+    [borderIconTextField textFieldShouldEndEditing:tf];
+    
+    NSRange r = NSMakeRange(10, 1);
+    NSString *repStr = @"Str";
+    
+    [borderIconTextField textField:tf shouldChangeCharactersInRange:r replacementString:repStr];
+    [borderIconTextField textFieldShouldClear:tf];
+    [borderIconTextField textFieldShouldReturn:tf];
+}
+
 @end
