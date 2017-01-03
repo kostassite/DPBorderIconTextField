@@ -22,6 +22,7 @@
 
 -(id)init{
     if (self = [super init]) {
+        [self setupViewElements];
         [self loadDefaultValues];
     }
     return self;
@@ -29,9 +30,27 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        [self setupViewElements];
         [self loadDefaultValues];
     }
     return self;
+}
+
+-(id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setupViewElements];
+        [self loadDefaultValues];
+    }
+    return self;
+}
+
+-(void)prepareForInterfaceBuilder{
+    [self updateImageViewBasedOnLeftInsetAndIcon];
+    if (_hasRoundedCorners) {
+        [self.layer setCornerRadius:self.frame.size.height/2];
+    }else{
+        [self.layer setCornerRadius:0];
+    }
 }
 
 -(void)loadDefaultValues{
@@ -41,46 +60,27 @@
     self.borderColorActive = [UIColor blueColor];
     
     self.hasRoundedCorners = YES;
+    self.icon = nil;
     self.iconLeftInset = 18;
-    self.icon = [UIImage imageNamed:@"unlock"];
     
     self.text = @"";
-    self.placeholder = @"Add text";
+    self.placeholder = @"";
     self.textColor = [UIColor blackColor];
     self.font = [UIFont systemFontOfSize:17];
+    
 }
 
--(void)awakeFromNib{
-    [self setupRoundedCorners];
-    [self setupBorder];
-    [self setupIcon];
+-(void)setupViewElements{
+    self.translatesAutoresizingMaskIntoConstraints = YES;
+    [self setupIconImageView];
     [self setupTextField];
-    
-    [super awakeFromNib];
 }
 
 #pragma mark - Setup Display
 
--(void)setupRoundedCorners{
-    if (self.hasRoundedCorners) {
-        [self.layer setCornerRadius:self.frame.size.height/2];
-    }
-}
-
--(void)setupBorder{
-    if (self.hasBorder) {
-        if (self.borderWidth == 0) {
-            self.borderWidth = 1;
-        }
-        [self.layer setBorderColor:self.borderColor.CGColor];
-        [self.layer setBorderWidth:self.borderWidth];
-    }
-}
-
--(void)setupIcon{
+-(void)setupIconImageView{
     iconImageView = [[UIImageView alloc]initWithImage:self.icon];
     [iconImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [iconImageView setFrame:CGRectMake(self.iconLeftInset, (self.frame.size.height - self.icon.size.height)/2, self.icon.size.width, self.icon.size.height)];
     [self addSubview:iconImageView];
 }
 
@@ -92,67 +92,110 @@
     textField.font = _font;
     textField.delegate = self;
     
-    [self updateBorderColorBasedOnTextLength];
-    
     [self addSubview:textField];
+}
+
+#pragma mark - IBInspectable Setters
+
+-(void)setIconLeftInset:(NSInteger)iconLeftInset{
+    _iconLeftInset = iconLeftInset;
+    [self updateImageViewBasedOnLeftInsetAndIcon];
+}
+
+-(void)setIcon:(UIImage *)icon{
+    _icon = icon;
+    [self updateImageViewBasedOnLeftInsetAndIcon];
+}
+
+-(void)updateImageViewBasedOnLeftInsetAndIcon{
+    if (_icon) {
+        [iconImageView setImage:_icon];
+        [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _icon.size.height)/2, _icon.size.width, _icon.size.height)];
+        [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) + 15, self.frame.size.height - 4)];
+    }else{
+        [iconImageView setImage:nil];
+        [textField setFrame:CGRectMake(_iconLeftInset, 2, self.frame.size.width -  _iconLeftInset - 15, self.frame.size.height - 4)];
+    }
+}
+
+-(void)setBorderColor:(UIColor *)borderColor{
+    _borderColor = borderColor;
+    [self updateBorderColorBasedOnTextLength];
+}
+
+-(void)setBorderColorActive:(UIColor *)borderColorActive{
+    _borderColorActive = borderColorActive;
+    [self updateBorderColorBasedOnTextLength];
+}
+
+-(void)setBorderWidth:(NSInteger)borderWidth{
+    _borderWidth = borderWidth;
+    [self.layer setBorderWidth:_borderWidth];
+}
+
+-(void)setHasRoundedCorners:(BOOL)hasRoundedCorners{
+    _hasRoundedCorners = hasRoundedCorners;
+    
+    if (_hasRoundedCorners) {
+        [self.layer setCornerRadius:self.frame.size.height/2];
+    }else{
+        [self.layer setCornerRadius:0];
+    }
+}
+
+-(void)setHasBorder:(BOOL)hasBorder{
+    _hasBorder = hasBorder;
+    if (_hasBorder) {
+        if (_borderWidth == 0) {
+            _borderWidth = 1;
+        }
+        [self.layer setBorderColor:_borderColor.CGColor];
+        [self.layer setBorderWidth:_borderWidth];
+    }else{
+        [self.layer setBorderWidth:0];
+    }
 }
 
 #pragma mark - TextField Setters Getters
 
 -(void)setText:(NSString *)text{
-    _text = text;
     textField.text = text;
     [self updateBorderColorBasedOnTextLength];
 }
 
 -(NSString*)text{
-    if (textField) {
-        return textField.text;
-    }
-    return _text;
+    return textField.text;
 }
 
 -(void)setPlaceholder:(NSString *)placeholder{
-    _placeholder = placeholder;
     textField.placeholder = placeholder;
 }
 
 -(NSString*)placeholder{
-    if (textField) {
-        return textField.placeholder;
-    }
-    return _placeholder;
+    return textField.placeholder;
 }
 
 -(void)setTextColor:(UIColor *)textColor{
-    _textColor = textColor;
     textField.textColor = textColor;
 }
 
 -(UIColor*)textColor{
-    if (textField) {
-        return textField.textColor;
-    }
-    return _textColor;
+    return textField.textColor;
 }
 
 -(void)setFont:(UIFont *)font{
-    _font = font;
     textField.font = font;
 }
 
 -(UIFont*)font{
-    if (textField) {
-        return textField.font;
-    }
-    return _font;
+    return textField.font;
 }
 
 -(void)updateBorderColorBasedOnTextLength{
     if (textField.text.length>0) {
-        self.layer.borderColor = self.borderColorActive.CGColor;
+        self.layer.borderColor =_borderColorActive.CGColor;
     }else{
-        self.layer.borderColor = self.borderColor.CGColor;
+        self.layer.borderColor = _borderColor.CGColor;
     }
 }
 

@@ -20,7 +20,7 @@
 
 - (void)setUp {
     [super setUp];
-    borderIconTextField = (DPBorderIconTextField<UITextFieldDelegate> *)[[DPBorderIconTextField alloc]init];
+    borderIconTextField = (DPBorderIconTextField<UITextFieldDelegate> *)[[DPBorderIconTextField alloc]initWithFrame:CGRectMake(0, 0, 100, 50)];
 
 }
 
@@ -33,7 +33,6 @@
 
 -(void)testThatBorderIsNotShownWhenHasBorderIsNo{
     borderIconTextField.hasBorder = NO;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqual(borderIconTextField.layer.borderWidth, 0,@"Border width should be 0 when hasBorder is NO");
 }
@@ -41,7 +40,6 @@
 -(void)testThatBorderIsShownWhenHasBorderIsYes{
     borderIconTextField.borderWidth = 2;
     borderIconTextField.hasBorder = YES;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertGreaterThan(borderIconTextField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
 }
@@ -49,7 +47,6 @@
 -(void)testThatBorderWidthIsNotZeroWhenHasBorderIsYes{
     borderIconTextField.borderWidth = 0;
     borderIconTextField.hasBorder = YES;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertGreaterThan(borderIconTextField.layer.borderWidth, 0,@"Border width should be more than 0 when hasBorder is YES");
 }
@@ -57,21 +54,18 @@
 -(void)testThatBorderWidthIsSetFromProperty{
     borderIconTextField.borderWidth = 10;
     borderIconTextField.hasBorder = YES;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqual(borderIconTextField.layer.borderWidth, borderIconTextField.borderWidth,@"Border width of layer should be equal to the property");
 }
 
 -(void)testThatHasRoundedCornerWhenPropertyIsYes{
     borderIconTextField.hasRoundedCorners = YES;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqual(borderIconTextField.layer.cornerRadius, borderIconTextField.frame.size.height/2,@"Corner radius should be equal to height/2");
 }
 
 -(void)testThatDoesntHasRoundedCornerWhenPropertyIsNo{
     borderIconTextField.hasRoundedCorners = NO;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqual(borderIconTextField.layer.cornerRadius, 0,@"Corner radius should be equal to 0");
 }
@@ -79,7 +73,30 @@
 -(void)testThatBorderColorIsSameAsProperty{
     borderIconTextField.hasBorder = YES;
     borderIconTextField.borderColor = [UIColor redColor];
-    [borderIconTextField awakeFromNib];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the same as property");
+}
+
+-(void)testThatWhenUpdateBorderColorTheCurrentColorIsSetBasedOnTextLenght{
+    borderIconTextField.text = @"HasText";
+    borderIconTextField.borderColor = [UIColor yellowColor];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the same as property");
+    
+    borderIconTextField.text = @"";
+    borderIconTextField.borderColor = [UIColor cyanColor];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the same as property");
+}
+
+-(void)testThatWhenUpdateActiveBorderColorTheCurrentColorIsSetBasedOnTextLenght{
+    borderIconTextField.text = @"HasText";
+    borderIconTextField.borderColorActive = [UIColor yellowColor];
+    
+    XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the same as property");
+    
+    borderIconTextField.text = @"";
+    borderIconTextField.borderColorActive = [UIColor cyanColor];
     
     XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the same as property");
 }
@@ -88,7 +105,6 @@
 
 -(void)testThatIconIsSetCorrectIntoTheImageView{
     borderIconTextField.icon = [UIImage imageNamed:@"lock"];
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], borderIconTextField.icon);
 }
@@ -96,21 +112,51 @@
 -(void)testThatIconImageViewHasCorrectInset{
     borderIconTextField.icon = [UIImage imageNamed:@"lock"];
     borderIconTextField.iconLeftInset = 10;
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqual([[borderIconTextField valueForKey:@"iconImageView"] frame].origin.x, borderIconTextField.iconLeftInset);
 }
 
+-(void)testThatWhenIconIsNilTheTextFieldStartsFromLeftInsetAndImageViewHasNoIcon{
+    borderIconTextField.icon = nil;
+    
+    XCTAssertEqual([[borderIconTextField valueForKey:@"textField"] frame].origin.x, borderIconTextField.iconLeftInset);
+    XCTAssertNil([[borderIconTextField valueForKey:@"iconImageView"] image]);
+}
+
+-(void)testThatWhenIconIsNotNilTheTextFieldStartsAfterImageViewAndImageViewStartsAtLeftInset{
+    borderIconTextField.icon = [UIImage imageNamed:@"lock"];
+
+    XCTAssertEqual([[borderIconTextField valueForKey:@"textField"] frame].origin.x, CGRectGetMaxX([[borderIconTextField valueForKey:@"iconImageView"]frame]) + 5);
+    XCTAssertEqual([[borderIconTextField valueForKey:@"iconImageView"] frame].origin.x, borderIconTextField.iconLeftInset);
+    XCTAssertNotNil([[borderIconTextField valueForKey:@"iconImageView"] image]);
+}
+
+-(void)testThatUpdateIconLeftInsetUpdatesImageViewAndTextFieldFramesWhenHasIcon{
+    borderIconTextField.icon = [UIImage imageNamed:@"lock"];
+    borderIconTextField.iconLeftInset = 15;
+
+    XCTAssertEqual([[borderIconTextField valueForKey:@"textField"] frame].origin.x, CGRectGetMaxX([[borderIconTextField valueForKey:@"iconImageView"]frame]) + 5);
+    XCTAssertEqual([[borderIconTextField valueForKey:@"iconImageView"] frame].origin.x, borderIconTextField.iconLeftInset);
+    XCTAssertNotNil([[borderIconTextField valueForKey:@"iconImageView"] image]);
+}
+
+-(void)testThatUpdateIconLeftInsetUpdatesImageViewAndTextFieldFramesWhenHasNoIcon{
+    borderIconTextField.icon = nil;
+    borderIconTextField.iconLeftInset = 15;
+
+    XCTAssertEqual([[borderIconTextField valueForKey:@"textField"] frame].origin.x, borderIconTextField.iconLeftInset);
+    XCTAssertNil([[borderIconTextField valueForKey:@"iconImageView"] image]);
+}
+
 #pragma mark - TextField
 
--(void)testThatTextFieldIsInitWithCorrectValues{
+-(void)testThatTextFieldSetCorrectValuesThorughProperties{
     
     borderIconTextField.text = @"Test";
     borderIconTextField.placeholder = @"Placeholder";
     borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
     borderIconTextField.textColor = [UIColor redColor];
     
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
@@ -132,28 +178,13 @@
     XCTAssertEqualObjects(borderIconTextField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
 }
 
--(void)testThatTextFieldGettersWorkWhenTextFieldAwakeFromNib{
-    borderIconTextField.text = @"Test";
-    borderIconTextField.placeholder = @"Placeholder";
-    borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
-    borderIconTextField.textColor = [UIColor redColor];
-    
-    [borderIconTextField awakeFromNib];
-    
-    XCTAssertEqualObjects(borderIconTextField.text,@"Test",@"Text should be set from property");
-    XCTAssertEqualObjects(borderIconTextField.placeholder,@"Placeholder",@"Placeholder should be set from property");
-    XCTAssertEqualObjects(borderIconTextField.textColor,[UIColor redColor],@"TextColor should be set from property");
-    XCTAssertEqualObjects(borderIconTextField.font,[UIFont boldSystemFontOfSize:11],@"Font should be set from property");
-}
-
 -(void)testThatTextFieldSettersUpdateTheTextField{
     borderIconTextField.text = @"Test";
     borderIconTextField.placeholder = @"Placeholder";
     borderIconTextField.font = [UIFont boldSystemFontOfSize:11];
     borderIconTextField.textColor = [UIColor redColor];
     
-    [borderIconTextField awakeFromNib];
-    
+   
     XCTAssertEqualObjects(borderIconTextField.text,@"Test",@"Text should be set from property");
     XCTAssertEqualObjects(borderIconTextField.placeholder,@"Placeholder",@"Placeholder should be set from property");
     XCTAssertEqualObjects(borderIconTextField.textColor,[UIColor redColor],@"TextColor should be set from property");
@@ -176,21 +207,18 @@
 
 -(void)testBorderColorStartsNotActiveWhenHasNoText{
     borderIconTextField.text = @"";
-    [borderIconTextField awakeFromNib];
 
     XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the non active");
 }
 
 -(void)testBorderColorStartsActiveWhenHasText{
     borderIconTextField.text = @"Has Text";
-    [borderIconTextField awakeFromNib];
     
     XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
 }
 
 -(void)testBorderColorChangesToActiveWhenSetText{
     borderIconTextField.text = @"";
-    [borderIconTextField awakeFromNib];
     borderIconTextField.text = @"Has Text";
     
     XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColorActive,@"Border color should be the active");
@@ -198,7 +226,6 @@
 
 -(void)testBorderColorChangesToInactiveWhenDeleteText{
     borderIconTextField.text = @"Has Text";
-    [borderIconTextField awakeFromNib];
     borderIconTextField.text = @"";
 
     XCTAssertEqualObjects([UIColor colorWithCGColor:borderIconTextField.layer.borderColor], borderIconTextField.borderColor,@"Border color should be the non active");
@@ -206,7 +233,6 @@
 
 -(void)testBorderColorChangesToActiveWhenBeginEditing{
     borderIconTextField.text = @"";
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
 
@@ -217,7 +243,6 @@
 
 -(void)testBorderColorStaysActiveWhenBeginEditingAndHasAlreadyText{
     borderIconTextField.text = @"Has Text";
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
@@ -228,7 +253,6 @@
 
 -(void)testBorderColorChangesToInactiveWhenEndEditingAndHasNoText{
     borderIconTextField.text = @"";
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
@@ -239,7 +263,6 @@
 
 -(void)testBorderColorStaysActiveWhenEndEditingAndHasText{
     borderIconTextField.text = @"Has Text";
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
@@ -251,8 +274,6 @@
 -(void)testThatTextFieldRealDelegateMethodsArePassedToTextFieldDelegateProperty{
     id protocolMock = OCMProtocolMock(@protocol(UITextFieldDelegate));
     [borderIconTextField setTextFieldDelegate:protocolMock];
-    
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
 
@@ -285,8 +306,6 @@
     id protocolMock = OCMProtocolMock(@protocol(UITextFieldDelegate));
     [borderIconTextField setTextFieldDelegate:protocolMock];
     
-    [borderIconTextField awakeFromNib];
-
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     NSRange r = NSMakeRange(10, 1);
     NSString *repStr = @"Str";
@@ -323,8 +342,6 @@
     id protocolMock = OCMProtocolMock(@protocol(UITextFieldDelegate));
     [borderIconTextField setTextFieldDelegate:protocolMock];
     
-    [borderIconTextField awakeFromNib];
-    
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     NSRange r = NSMakeRange(10, 1);
     NSString *repStr = @"Str";
@@ -360,8 +377,6 @@
 -(void)testThatTextFieldRealDelegateMethodsReturnYesWhenNoDelegate{
     id protocolMock = OCMProtocolMock(@protocol(UITextFieldDelegate));
     
-    [borderIconTextField awakeFromNib];
-    
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     NSRange r = NSMakeRange(10, 1);
     NSString *repStr = @"Str";
@@ -392,8 +407,6 @@
 -(void)testThatTextFieldRealDelegateMethodsReturnYesWhenDelegateNotImplementedMethod{
     id emptyDelegate = OCMClassMock([NSObject class]);
     [borderIconTextField setTextFieldDelegate:emptyDelegate];
-
-    [borderIconTextField awakeFromNib];
     
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     NSRange r = NSMakeRange(10, 1);
@@ -419,8 +432,6 @@
     id emptyDelegate = OCMStrictClassMock([NSObject class]);
     [borderIconTextField setTextFieldDelegate:emptyDelegate];
     
-    [borderIconTextField awakeFromNib];
-
     UITextField *tf = [borderIconTextField valueForKey:@"textField"];
     
     [borderIconTextField textFieldDidBeginEditing:tf];
