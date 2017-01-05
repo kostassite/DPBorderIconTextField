@@ -13,6 +13,7 @@
 		2E9937BA1E1E5A590005D209 /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937B91E1E5A590005D209 /* earth.png */; };
 		2E9937BC1E1E5A8B0005D209 /* unvalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937BB1E1E5A8B0005D209 /* unvalid.png */; };
 		2E9937BE1E1E5A900005D209 /* valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937BD1E1E5A900005D209 /* valid.png */; };
+		2EAB7DE51E1E923A00B3BB57 /* DPBorderIconTextFieldPasswordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB7DE41E1E923A00B3BB57 /* DPBorderIconTextFieldPasswordTests.m */; };
 		2EBCB42C1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */; };
 		2EC1D0E41E0C25670087A8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E31E0C25670087A8B1 /* main.m */; };
 		2EC1D0E71E0C25670087A8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */; };
@@ -54,6 +55,7 @@
 		2E9937B91E1E5A590005D209 /* earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth.png; sourceTree = "<group>"; };
 		2E9937BB1E1E5A8B0005D209 /* unvalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unvalid.png; sourceTree = "<group>"; };
 		2E9937BD1E1E5A900005D209 /* valid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valid.png; sourceTree = "<group>"; };
+		2EAB7DE41E1E923A00B3BB57 /* DPBorderIconTextFieldPasswordTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBorderIconTextFieldPasswordTests.m; sourceTree = "<group>"; };
 		2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBorderIconTextFieldRightIconTests.m; sourceTree = "<group>"; };
 		2EC1D0DF1E0C25670087A8B1 /* DPBorderIconTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPBorderIconTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC1D0E31E0C25670087A8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				2EC1D0FC1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m */,
 				2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */,
+				2EAB7DE41E1E923A00B3BB57 /* DPBorderIconTextFieldPasswordTests.m */,
 				2EC1D0FE1E0C25670087A8B1 /* Info.plist */,
 			);
 			path = DPBorderIconTextFieldTests;
@@ -536,6 +539,7 @@
 			files = (
 				2EBCB42C1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m in Sources */,
 				2EC1D0FD1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m in Sources */,
+				2EAB7DE51E1E923A00B3BB57 /* DPBorderIconTextFieldPasswordTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,6 +33,10 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable UIImage *validatedIcon;
 @property (nonatomic,strong) IBInspectable UIImage *unvalidatedIcon;
 
+@property (nonatomic,getter=isSecureTextEntry) IBInspectable BOOL secureTextEntry;
+@property (nonatomic,strong) IBInspectable UIImage *showPasswordIcon;
+@property (nonatomic,strong) IBInspectable UIImage *hidePasswordIcon;
+
 @property (nonatomic,strong) IBInspectable UIFont *font;
 @property (nonatomic,strong) IBInspectable NSString *placeholder;
 @property (nonatomic,strong) IBInspectable NSString *text;
@@ -42,5 +46,7 @@ IB_DESIGNABLE
 
 -(void)showValidationSucceed:(BOOL)succeed;
 -(void)clearValidationState;
+
+-(void)toggleShowPassword;
 
 @end
