@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1D85FCF91EEEE2A197425CEA /* libPods-DPBorderIconTextField.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E75D9DA1C9590096FF419F30 /* libPods-DPBorderIconTextField.a */; };
 		2BC973F17A0B3A9D2C23D028 /* libPods-DPBorderIconTextFieldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5254B3BDF4C3D3E2EE3DEE /* libPods-DPBorderIconTextFieldTests.a */; };
+		2E76EB5C1E1E5B71000FAE0A /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E76EB5B1E1E5B71000FAE0A /* clear.png */; };
+		2E9937BA1E1E5A590005D209 /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937B91E1E5A590005D209 /* earth.png */; };
+		2E9937BC1E1E5A8B0005D209 /* unvalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937BB1E1E5A8B0005D209 /* unvalid.png */; };
+		2E9937BE1E1E5A900005D209 /* valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937BD1E1E5A900005D209 /* valid.png */; };
+		2EBCB42C1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */; };
 		2EC1D0E41E0C25670087A8B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E31E0C25670087A8B1 /* main.m */; };
 		2EC1D0E71E0C25670087A8B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */; };
 		2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */; };
@@ -45,6 +50,11 @@
 /* Begin PBXFileReference section */
 		05224047A244B482805717AE /* Pods-DPBorderIconTextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField.release.xcconfig"; sourceTree = "<group>"; };
 		0F0938318B943C5AF78EEDAA /* Pods-DPBorderIconTextFieldUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextFieldUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E76EB5B1E1E5B71000FAE0A /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
+		2E9937B91E1E5A590005D209 /* earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth.png; sourceTree = "<group>"; };
+		2E9937BB1E1E5A8B0005D209 /* unvalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unvalid.png; sourceTree = "<group>"; };
+		2E9937BD1E1E5A900005D209 /* valid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valid.png; sourceTree = "<group>"; };
+		2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBorderIconTextFieldRightIconTests.m; sourceTree = "<group>"; };
 		2EC1D0DF1E0C25670087A8B1 /* DPBorderIconTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPBorderIconTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC1D0E31E0C25670087A8B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +125,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2E76EB5D1E1E5B74000FAE0A /* TestIcons */ = {
+			isa = PBXGroup;
+			children = (
+				2EC1D11F1E0C2D430087A8B1 /* lock.png */,
+				2EC1D1221E0C2F820087A8B1 /* unlock.png */,
+				2E9937B91E1E5A590005D209 /* earth.png */,
+				2E9937BB1E1E5A8B0005D209 /* unvalid.png */,
+				2E9937BD1E1E5A900005D209 /* valid.png */,
+				2E76EB5B1E1E5B71000FAE0A /* clear.png */,
+			);
+			name = TestIcons;
+			sourceTree = "<group>";
+		};
 		2EC1D0D61E0C25670087A8B1 = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +163,6 @@
 		2EC1D0E11E0C25670087A8B1 /* DPBorderIconTextField */ = {
 			isa = PBXGroup;
 			children = (
-				2EC1D11F1E0C2D430087A8B1 /* lock.png */,
-				2EC1D1221E0C2F820087A8B1 /* unlock.png */,
 				2EC1D0E51E0C25670087A8B1 /* AppDelegate.h */,
 				2EC1D0E61E0C25670087A8B1 /* AppDelegate.m */,
 				2EC1D11E1E0C265E0087A8B1 /* DummyViewController */,
@@ -149,6 +170,7 @@
 				2EC1D0EE1E0C25670087A8B1 /* Assets.xcassets */,
 				2EC1D0F01E0C25670087A8B1 /* LaunchScreen.storyboard */,
 				2EC1D0F31E0C25670087A8B1 /* Info.plist */,
+				2E76EB5D1E1E5B74000FAE0A /* TestIcons */,
 				2EC1D0E21E0C25670087A8B1 /* Supporting Files */,
 			);
 			path = DPBorderIconTextField;
@@ -166,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				2EC1D0FC1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m */,
+				2EBCB42B1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m */,
 				2EC1D0FE1E0C25670087A8B1 /* Info.plist */,
 			);
 			path = DPBorderIconTextFieldTests;
@@ -326,8 +349,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E76EB5C1E1E5B71000FAE0A /* clear.png in Resources */,
 				2EC1D1201E0C2D430087A8B1 /* lock.png in Resources */,
 				2EC1D1231E0C2F820087A8B1 /* unlock.png in Resources */,
+				2E9937BA1E1E5A590005D209 /* earth.png in Resources */,
+				2E9937BC1E1E5A8B0005D209 /* unvalid.png in Resources */,
+				2E9937BE1E1E5A900005D209 /* valid.png in Resources */,
 				2EC1D0F21E0C25670087A8B1 /* LaunchScreen.storyboard in Resources */,
 				2EC1D11D1E0C26560087A8B1 /* DummyViewController.xib in Resources */,
 				2EC1D0EF1E0C25670087A8B1 /* Assets.xcassets in Resources */,
@@ -491,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBCB42C1E1D5FFF005573D0 /* DPBorderIconTextFieldRightIconTests.m in Sources */,
 				2EC1D0FD1E0C25670087A8B1 /* DPBorderIconTextFieldTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

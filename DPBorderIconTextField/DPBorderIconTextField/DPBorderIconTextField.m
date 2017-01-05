@@ -111,7 +111,7 @@
     if (_icon) {
         [iconImageView setImage:_icon];
         [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _icon.size.height)/2, _icon.size.width, _icon.size.height)];
-        [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) + 15, self.frame.size.height - 4)];
+        [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) - 15, self.frame.size.height - 4)];
     }else{
         [iconImageView setImage:nil];
         [textField setFrame:CGRectMake(_iconLeftInset, 2, self.frame.size.width -  _iconLeftInset - 15, self.frame.size.height - 4)];
@@ -154,6 +154,43 @@
     }else{
         [self.layer setBorderWidth:0];
     }
+}
+
+#pragma mark - RightIcon Setters
+
+-(void)setClearIcon:(UIImage *)clearIcon{
+    _clearIcon = clearIcon;
+    if (!_rightIcon) {
+        [textField setRightViewMode:UITextFieldViewModeWhileEditing];
+        [textField setRightView:[self clearBtnWithClearIcon:_clearIcon]];
+    }
+}
+
+-(void)setRightIcon:(UIImage *)rightIcon{
+    _rightIcon = rightIcon;
+    [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+    [textField setRightView:[[UIImageView alloc] initWithImage:rightIcon]];
+}
+
+-(void)setValidatedIcon:(UIImage *)validatedIcon{
+    _validatedIcon = validatedIcon;
+}
+
+-(void)setUnvalidatedIcon:(UIImage *)unvalidatedIcon{
+    _unvalidatedIcon = unvalidatedIcon;
+}
+
+-(UIButton*)clearBtnWithClearIcon:(UIImage*)icon{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setFrame:CGRectMake(0, 0, icon.size.width, icon.size.height)];
+    [btn setImage:icon forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(clearPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return btn;
+}
+
+-(void)clearPressed:(id)sender{
+    [textField setText:@""];
 }
 
 #pragma mark - TextField Setters Getters
@@ -210,6 +247,17 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)tf{
     self.layer.borderColor = self.borderColorActive.CGColor;
+    if (_clearIcon) {
+        [textField setRightViewMode:UITextFieldViewModeWhileEditing];
+        [textField setRightView:[self clearBtnWithClearIcon:_clearIcon]];
+    }else if (_rightIcon) {
+        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        [textField setRightView:[[UIImageView alloc] initWithImage:_rightIcon]];
+    }else{
+        [textField setRightViewMode:UITextFieldViewModeNever];
+        [textField setRightView:nil];
+    }
+    
     if ([self.textFieldDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
         [self.textFieldDelegate textFieldDidBeginEditing:tf];
     }
@@ -224,6 +272,14 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)tf{
     [self updateBorderColorBasedOnTextLength];
+    if (_rightIcon) {
+        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        [textField setRightView:[[UIImageView alloc] initWithImage:_rightIcon]];
+    }else{
+        [textField setRightViewMode:UITextFieldViewModeNever];
+        [textField setRightView:nil];
+    }
+    
     if ([self.textFieldDelegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
         [self.textFieldDelegate textFieldDidEndEditing:tf];
     }
@@ -248,6 +304,32 @@
         return YES;
     }
     return [self.textFieldDelegate textFieldShouldReturn:tf];
+}
+
+#pragma mark - Validation
+
+-(void)showValidationSucceed:(BOOL)succeed{
+    [textField resignFirstResponder];
+    
+   
+    if (succeed && _validatedIcon) {
+        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        [textField setRightView:[[UIImageView alloc]initWithImage:_validatedIcon]];
+    }else if (!succeed && _unvalidatedIcon){
+        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        [textField setRightView:[[UIImageView alloc]initWithImage:_unvalidatedIcon]];
+    }
+}
+
+-(void)clearValidationState{
+    [textField resignFirstResponder];
+
+    if (_rightIcon) {
+        [self setRightIcon:_rightIcon];
+    }else{
+        [textField setRightViewMode:UITextFieldViewModeNever];
+        [textField setRightView:nil];
+    }
 }
 
 @end

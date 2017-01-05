@@ -27,11 +27,20 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable UIImage *icon;
 @property (nonatomic) IBInspectable NSInteger iconLeftInset;
 
+@property (nonatomic,strong) IBInspectable UIImage *clearIcon;
+
+@property (nonatomic,strong) IBInspectable UIImage *rightIcon;
+@property (nonatomic,strong) IBInspectable UIImage *validatedIcon;
+@property (nonatomic,strong) IBInspectable UIImage *unvalidatedIcon;
+
 @property (nonatomic,strong) IBInspectable UIFont *font;
 @property (nonatomic,strong) IBInspectable NSString *placeholder;
 @property (nonatomic,strong) IBInspectable NSString *text;
 @property (nonatomic,strong) IBInspectable UIColor *textColor;
 
-@property (nonatomic,weak) id<UITextFieldDelegate> textFieldDelegate;
+@property (nonatomic,weak) IBOutlet id<UITextFieldDelegate> textFieldDelegate;
+
+-(void)showValidationSucceed:(BOOL)succeed;
+-(void)clearValidationState;
 
 @end
