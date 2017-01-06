@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "DPBorderIconTextField.h"
-#import <OCMock.h>
+#import "OCMock.h"
 
 @interface DPBorderIconTextFieldRightIconTests : XCTestCase{
     DPBorderIconTextField<UITextFieldDelegate> *borderIconTextField;

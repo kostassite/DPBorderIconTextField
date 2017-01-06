@@ -1,0 +1,6 @@
+framework module Pods_DPBorderIconTextFieldUITests {
+  umbrella header "Pods-DPBorderIconTextFieldUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
