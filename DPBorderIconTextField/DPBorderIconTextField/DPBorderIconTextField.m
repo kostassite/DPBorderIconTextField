@@ -9,7 +9,8 @@
 #import "DPBorderIconTextField.h"
 
 @interface DPBorderIconTextField ()<UITextFieldDelegate>{
-    
+    NSMutableArray *addedConstraints;
+    BOOL inInterfaceBuilder; //used for design in InterfaceBuilder
 }
 
 @end
@@ -38,6 +39,7 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        inInterfaceBuilder = YES;
         [self setupViewElements];
         [self loadDefaultValues];
     }
@@ -46,11 +48,6 @@
 
 -(void)prepareForInterfaceBuilder{
     [self updateImageViewBasedOnLeftInsetAndIcon];
-    if (_hasRoundedCorners) {
-        [self.layer setCornerRadius:self.frame.size.height/2];
-    }else{
-        [self.layer setCornerRadius:0];
-    }
 }
 
 -(void)loadDefaultValues{
@@ -71,9 +68,10 @@
 }
 
 -(void)setupViewElements{
-    self.translatesAutoresizingMaskIntoConstraints = YES;
+    self.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
     [self setupIconImageView];
     [self setupTextField];
+    [self updateImageViewBasedOnLeftInsetAndIcon];
 }
 
 #pragma mark - Setup Display
@@ -81,16 +79,19 @@
 -(void)setupIconImageView{
     iconImageView = [[UIImageView alloc]initWithImage:self.icon];
     [iconImageView setContentMode:UIViewContentModeScaleAspectFit];
+    iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self addSubview:iconImageView];
 }
 
 -(void)setupTextField{
-    textField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) + 15, self.frame.size.height - 4)];
+    textField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) - _iconLeftInset * 2, self.frame.size.height - 4)];
     textField.placeholder = _placeholder;
     textField.text = _text;
     textField.textColor = _textColor;
     textField.font = _font;
     textField.delegate = self;
+    textField.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self addSubview:textField];
 }
@@ -108,13 +109,52 @@
 }
 
 -(void)updateImageViewBasedOnLeftInsetAndIcon{
+    [self removeConstraints:addedConstraints];
+
+    self.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
+    textField.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
+    iconImageView.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
+    
     if (_icon) {
         [iconImageView setImage:_icon];
-        [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _icon.size.height)/2, _icon.size.width, _icon.size.height)];
-        [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) - 15, self.frame.size.height - 4)];
+        if (inInterfaceBuilder) {
+            [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _icon.size.height)/2, _icon.size.width, _icon.size.height)];
+            [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) - _iconLeftInset * 2, self.frame.size.height - 4)];
+        }else{
+            addedConstraints = [[NSMutableArray alloc]init];
+            
+            NSDictionary *viewsDict = NSDictionaryOfVariableBindings(textField,iconImageView);
+            
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leftInset-[iconImageView(iconWidth)]-5-[textField]-leftInset-|" options:0 metrics:@{@"leftInset":@(_iconLeftInset),@"iconWidth":@(_icon.size.width)} views:viewsDict]];
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconImageView(s)]" options:0 metrics:@{@"s":@(_icon.size.height)} views:viewsDict]];
+            [addedConstraints addObject:[NSLayoutConstraint constraintWithItem:iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[textField]-2-|" options:0 metrics:nil views:viewsDict]];
+            
+            [self addConstraints:addedConstraints];
+            [self layoutIfNeeded];
+        }
     }else{
         [iconImageView setImage:nil];
-        [textField setFrame:CGRectMake(_iconLeftInset, 2, self.frame.size.width -  _iconLeftInset - 15, self.frame.size.height - 4)];
+        
+        if (inInterfaceBuilder) {
+            [textField setFrame:CGRectMake(_iconLeftInset, 2, self.frame.size.width -  _iconLeftInset * 2, self.frame.size.height - 4)];
+        }else{
+            addedConstraints = [[NSMutableArray alloc]init];
+            
+            NSDictionary *viewsDict = NSDictionaryOfVariableBindings(textField);
+            
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leftInset-[textField]-leftInset-|" options:0 metrics:@{@"leftInset":@(_iconLeftInset)} views:viewsDict]];
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[textField]-2-|" options:0 metrics:nil views:viewsDict]];
+            
+            [self addConstraints:addedConstraints];
+            [self layoutIfNeeded];
+        }
+    }
+    
+    if (_hasRoundedCorners) {
+        [self.layer setCornerRadius:self.frame.size.height/2];
+    }else{
+        [self.layer setCornerRadius:0];
     }
 }
 

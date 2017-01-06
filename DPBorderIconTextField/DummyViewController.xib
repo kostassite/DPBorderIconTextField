@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,10 +20,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8N-1K-vqt" customClass="DPBorderIconTextField">
-                    <rect key="frame" x="67" y="158" width="240" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8N-1K-vqt" customClass="DPBorderIconTextField">
+                    <rect key="frame" x="50" y="50" width="275" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="TPg-CU-UXR"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasBorder" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -38,7 +40,7 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="image" keyPath="icon" value="lock.png"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="iconLeftInset">
-                            <integer key="value" value="12"/>
+                            <integer key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="image" keyPath="validatedIcon" value="valid.png"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="unvalidatedIcon" value="unvalid.png"/>
@@ -52,7 +54,12 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="-298.5" y="19.5"/>
+            <constraints>
+                <constraint firstItem="h8N-1K-vqt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GOB-sg-uSM"/>
+                <constraint firstItem="h8N-1K-vqt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cb6-9j-HkP"/>
+                <constraint firstItem="h8N-1K-vqt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="smm-Qb-814"/>
+            </constraints>
+            <point key="canvasLocation" x="-365" y="-189"/>
         </view>
     </objects>
     <resources>
