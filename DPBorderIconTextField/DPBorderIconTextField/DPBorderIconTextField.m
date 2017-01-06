@@ -357,6 +357,12 @@
     if (_rightIcon) {
         [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
         [textField setRightView:[[UIImageView alloc] initWithImage:_rightIcon]];
+    }else if (textField.isSecureTextEntry && _showPasswordIcon){
+        [textField setRightViewMode:UITextFieldViewModeAlways];
+        [textField setRightView:[self toggleShowPasswordBtnWithIcon:_showPasswordIcon]];
+    }else if (!textField.isSecureTextEntry && _hidePasswordIcon){
+        [textField setRightViewMode:UITextFieldViewModeAlways];
+        [textField setRightView:[self toggleShowPasswordBtnWithIcon:_hidePasswordIcon]];
     }else{
         [textField setRightViewMode:UITextFieldViewModeNever];
         [textField setRightView:nil];

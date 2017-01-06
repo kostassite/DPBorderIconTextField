@@ -174,4 +174,31 @@
     XCTAssertTrue([[[(UIButton*)tf.rightView imageView] image] isEqual:hidePassIcon],@"Right View should have the showPassIcon as image of the button");
 }
 
+-(void)testThatWhenDidEndEditingShowsShowPassIconWhenIsSecureTextEntryAndHasIcon{
+    UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
+    
+    [borderIconTextField setShowPasswordIcon:showPassIcon];
+    [borderIconTextField setHidePasswordIcon:hidePassIcon];
+
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
+    XCTAssertTrue([tf.rightView isKindOfClass:[UIButton class]],@"Right View should be an UIButton");
+    XCTAssertTrue([[[(UIButton*)tf.rightView imageView] image] isEqual:showPassIcon],@"Right View should have the showPassIcon as image of the button");
+}
+
+-(void)testThatWhenDidEndEditingShowsHidePassIconWhenIsNotSecureTextEntryAndHasIcon{
+    UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
+    
+    [borderIconTextField setShowPasswordIcon:showPassIcon];
+    [borderIconTextField setHidePasswordIcon:hidePassIcon];
+    [borderIconTextField toggleShowPassword];
+
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
+    XCTAssertTrue([tf.rightView isKindOfClass:[UIButton class]],@"Right View should be an UIButton");
+    XCTAssertTrue([[[(UIButton*)tf.rightView imageView] image] isEqual:hidePassIcon],@"Right View should have the showPassIcon as image of the button");
+}
+
 @end
