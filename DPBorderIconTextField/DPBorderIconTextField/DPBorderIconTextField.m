@@ -271,6 +271,10 @@
 
 #pragma mark - TextField Setters Getters
 
+-(UITextField*)textField{
+    return textField;
+}
+
 -(void)setText:(NSString *)text{
     textField.text = text;
     [self updateBorderColorBasedOnTextLength];

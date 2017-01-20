@@ -203,6 +203,10 @@
     XCTAssertEqualObjects(tf.font,[UIFont boldSystemFontOfSize:22],@"Font should be updated from property");
 }
 
+-(void)testTextFieldGetter{
+    XCTAssertEqual(borderIconTextField.textField, [borderIconTextField valueForKey:@"textField"]);
+}
+
 #pragma mark - TextField Border change
 
 -(void)testBorderColorStartsNotActiveWhenHasNoText{

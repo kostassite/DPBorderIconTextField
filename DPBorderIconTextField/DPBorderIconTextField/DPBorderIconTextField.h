@@ -44,6 +44,8 @@ IB_DESIGNABLE
 
 @property (nonatomic,weak) IBOutlet id<UITextFieldDelegate> textFieldDelegate;
 
+-(UITextField*)textField;
+
 -(void)showValidationSucceed:(BOOL)succeed;
 -(void)clearValidationState;
 
