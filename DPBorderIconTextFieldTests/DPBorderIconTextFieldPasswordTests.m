@@ -105,9 +105,23 @@
     [borderIconTextField setHidePasswordIcon:hidePassIcon];
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
-    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:YES];
 
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
+    XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
+    XCTAssertTrue([[(UIImageView*)tf.rightView image] isEqual:iconMock],@"Right View should have the iconMock");
+}
+
+-(void)testThatShowValidatedSucceedYesShowsTheValidatedIconWhileEditingWhenHaveShowPassIconAndResignParameterIsNO{
+    UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
+    
+    [borderIconTextField setShowPasswordIcon:showPassIcon];
+    [borderIconTextField setHidePasswordIcon:hidePassIcon];
+    [borderIconTextField setValidatedIcon:iconMock];
+    [borderIconTextField setUnvalidatedIcon:iconMock];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
+    
+    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
     XCTAssertTrue([[(UIImageView*)tf.rightView image] isEqual:iconMock],@"Right View should have the iconMock");
 }

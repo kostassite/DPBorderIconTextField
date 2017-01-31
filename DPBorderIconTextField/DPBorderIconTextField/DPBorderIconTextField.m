@@ -406,9 +406,20 @@
     }
    
     if (succeed && _validatedIcon) {
-        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        if (resignFirstResponder) {
+            [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        }else{
+            [textField setRightViewMode:UITextFieldViewModeAlways];
+        }
+        
         [textField setRightView:[[UIImageView alloc]initWithImage:_validatedIcon]];
     }else if (!succeed && _unvalidatedIcon){
+        if (resignFirstResponder) {
+            [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
+        }else{
+            [textField setRightViewMode:UITextFieldViewModeAlways];
+        }
+        
         [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
         [textField setRightView:[[UIImageView alloc]initWithImage:_unvalidatedIcon]];
     }
