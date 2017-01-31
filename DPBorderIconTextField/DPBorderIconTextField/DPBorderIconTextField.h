@@ -46,7 +46,7 @@ IB_DESIGNABLE
 
 -(UITextField*)textField;
 
--(void)showValidationSucceed:(BOOL)succeed;
+-(void)showValidationSucceed:(BOOL)succeed withResignFirstResponder:(BOOL)resignFirstResponder;
 -(void)clearValidationState;
 
 -(void)toggleShowPassword;

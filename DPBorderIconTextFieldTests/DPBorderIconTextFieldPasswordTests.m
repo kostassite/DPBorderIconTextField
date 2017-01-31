@@ -105,7 +105,7 @@
     [borderIconTextField setHidePasswordIcon:hidePassIcon];
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
 
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
@@ -119,7 +119,7 @@
     [borderIconTextField setHidePasswordIcon:hidePassIcon];
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField clearValidationState];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
@@ -135,7 +135,7 @@
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
     [borderIconTextField toggleShowPassword];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField clearValidationState];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
@@ -150,7 +150,7 @@
     [borderIconTextField setHidePasswordIcon:hidePassIcon];
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField textFieldDidBeginEditing:tf];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
@@ -166,7 +166,7 @@
     [borderIconTextField setValidatedIcon:iconMock];
     [borderIconTextField setUnvalidatedIcon:iconMock];
     [borderIconTextField toggleShowPassword];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField textFieldDidBeginEditing:tf];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);

@@ -400,9 +400,10 @@
 
 #pragma mark - Validation
 
--(void)showValidationSucceed:(BOOL)succeed{
-    [textField resignFirstResponder];
-    
+-(void)showValidationSucceed:(BOOL)succeed withResignFirstResponder:(BOOL)resignFirstResponder{
+    if (resignFirstResponder) {
+        [textField resignFirstResponder];
+    }
    
     if (succeed && _validatedIcon) {
         [textField setRightViewMode:UITextFieldViewModeUnlessEditing];

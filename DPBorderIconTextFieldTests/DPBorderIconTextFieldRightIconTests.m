@@ -132,14 +132,14 @@
 -(void)testThatShowValidatedSucceedDoingNothingWhenYesNoValidatedIcon{
     UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
 
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     OCMReject([tf setRightView:[OCMArg any]]);
 }
 
 -(void)testThatShowValidatedSucceedDoingNothingWhenNoAndNoUnvalidatedIcon{
     UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
     
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     OCMReject([tf setRightView:[OCMArg any]]);
 }
 
@@ -148,7 +148,7 @@
 
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
 
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
@@ -161,7 +161,7 @@
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField setRightIcon:rightIcon];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
@@ -173,7 +173,7 @@
     
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
@@ -186,7 +186,7 @@
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField setRightIcon:rightIcon];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
@@ -198,7 +198,7 @@
     
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField clearValidationState];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeNever);
@@ -211,7 +211,7 @@
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField setRightIcon:rightIcon];
-    [borderIconTextField showValidationSucceed:NO];
+    [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     [borderIconTextField clearValidationState];
     
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
@@ -226,7 +226,7 @@
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField setRightIcon:rightIcon];
     [borderIconTextField setClearIcon:clearIcon];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     
     [borderIconTextField textFieldDidBeginEditing:tf];
     
@@ -241,7 +241,7 @@
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField setRightIcon:rightIcon];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     
     [borderIconTextField textFieldDidBeginEditing:tf];
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
@@ -254,19 +254,27 @@
     
     [borderIconTextField setValidatedIcon:validIcon];
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     
     [borderIconTextField textFieldDidBeginEditing:tf];
     XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeNever);
     XCTAssertNil(tf.rightView,@"RightView should be nil cause no rightIcon");
 }
 
--(void)testThatShowValidatedSucceedDismissKeyboard{
+-(void)testThatShowValidatedSucceedDismissKeyboardIfResignFirstResponderIsYes{
     UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
 
-    [borderIconTextField showValidationSucceed:YES];
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:YES];
     
     OCMVerify([tf resignFirstResponder]);
+}
+
+-(void)testThatShowValidatedSucceedDoesntDismissKeyboardIfResignFirstResponderIsNO{
+    UITextField *tf = OCMPartialMock([borderIconTextField valueForKey:@"textField"]);
+    
+    [borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
+    
+    OCMReject([tf resignFirstResponder]);
 }
 
 -(void)testThatClearValidationStateDismissKeyboard{

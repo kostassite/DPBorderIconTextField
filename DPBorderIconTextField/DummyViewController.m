@@ -15,10 +15,10 @@
     [super viewDidLoad];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.borderIconTextField showValidationSucceed:YES];
+        [self.borderIconTextField showValidationSucceed:YES withResignFirstResponder:NO];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.borderIconTextField showValidationSucceed:NO];
+        [self.borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.borderIconTextField clearValidationState];
