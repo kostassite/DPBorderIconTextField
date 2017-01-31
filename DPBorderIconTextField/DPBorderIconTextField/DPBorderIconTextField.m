@@ -420,7 +420,6 @@
             [textField setRightViewMode:UITextFieldViewModeAlways];
         }
         
-        [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
         [textField setRightView:[[UIImageView alloc]initWithImage:_unvalidatedIcon]];
     }
 }
