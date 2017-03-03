@@ -92,7 +92,8 @@
     textField.font = _font;
     textField.delegate = self;
     textField.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    [textField setIsAccessibilityElement:YES];
+
     [self addSubview:textField];
 }
 
@@ -439,6 +440,24 @@
         [textField setRightViewMode:UITextFieldViewModeNever];
         [textField setRightView:nil];
     }
+}
+
+#pragma mark - Accessibility
+
+- (BOOL)isAccessibilityElement{
+    return NO;
+}
+
+- (NSInteger)accessibilityElementCount{
+    return 1;
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index{
+    return textField;
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element{
+    return 0;
 }
 
 @end
