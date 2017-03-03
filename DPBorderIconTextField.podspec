@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DPBorderIconTextField"
-  s.version      = "1.7.3"
+  s.version      = "1.8"
   s.summary      = "A UIView that has a UITextField and a customizable icon and a border that changes color when active."
 
   # This description is used to generate tags and improve search results.
