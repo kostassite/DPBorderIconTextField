@@ -161,6 +161,115 @@
     XCTAssertNil([[borderIconTextField valueForKey:@"iconImageView"] image]);
 }
 
+#pragma mark - Icon Active
+
+-(void)testIconStartsNotActiveWhenHasNoText{
+    
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"";
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], notActiveIcon,@"Icon should be the non active");
+}
+
+-(void)testIconStartsActiveWhenHasText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"Has Text";
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], activeIcon,@"icon should be the active");
+}
+
+-(void)testIconChangesToActiveWhenSetText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"";
+    borderIconTextField.text = @"Has Text";
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], activeIcon,@"icon should be the active");
+}
+
+-(void)testIconChangesToInactiveWhenDeleteText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"Has Text";
+    borderIconTextField.text = @"";
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], notActiveIcon,@"Icon should be the non active");
+}
+
+-(void)testIconChangesToActiveWhenBeginEditing{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"";
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidBeginEditing:tf];
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], activeIcon,@"icon should be the active");
+}
+
+-(void)testIconStaysActiveWhenBeginEditingAndHasAlreadyText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"Has Text";
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidBeginEditing:tf];
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], activeIcon,@"icon should be the active");
+}
+
+-(void)testIconChangesToInactiveWhenEndEditingAndHasNoText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"";
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], notActiveIcon,@"Icon should be the non active");
+}
+
+-(void)testIconStaysActiveWhenEndEditingAndHasText{
+    UIImage *notActiveIcon = OCMClassMock([UIImage class]);
+    UIImage *activeIcon = OCMClassMock([UIImage class]);
+    borderIconTextField.icon = notActiveIcon;
+    borderIconTextField.iconActive = activeIcon;
+    
+    borderIconTextField.text = @"Has Text";
+    
+    UITextField *tf = [borderIconTextField valueForKey:@"textField"];
+    
+    [borderIconTextField textFieldDidEndEditing:tf];
+    
+    XCTAssertEqualObjects([[borderIconTextField valueForKey:@"iconImageView"] image], activeIcon,@"icon should be the active");
+}
+
 #pragma mark - TextField
 
 -(void)testThatTextFieldSetCorrectValuesThorughProperties{

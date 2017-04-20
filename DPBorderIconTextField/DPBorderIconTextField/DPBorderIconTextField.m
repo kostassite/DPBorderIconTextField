@@ -109,6 +109,11 @@
     [self updateImageViewBasedOnLeftInsetAndIcon];
 }
 
+-(void)setIconActive:(UIImage *)iconActive{
+    _iconActive = iconActive;
+    [self updateImageViewBasedOnLeftInsetAndIcon];
+}
+
 -(void)updateImageViewBasedOnLeftInsetAndIcon{
     [self removeConstraints:addedConstraints];
 
@@ -116,7 +121,25 @@
     textField.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
     iconImageView.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
     
-    if (_icon) {
+    if (_iconActive && textField.text.length>0) {
+        [iconImageView setImage:_iconActive];
+        if (inInterfaceBuilder) {
+            [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _iconActive.size.height)/2, _iconActive.size.width, _iconActive.size.height)];
+            [textField setFrame:CGRectMake(CGRectGetMaxX(iconImageView.frame) + 5, 2, self.frame.size.width -  CGRectGetMaxX(iconImageView.frame) - _iconLeftInset * 2, self.frame.size.height - 4)];
+        }else{
+            addedConstraints = [[NSMutableArray alloc]init];
+            
+            NSDictionary *viewsDict = NSDictionaryOfVariableBindings(textField,iconImageView);
+            
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leftInset-[iconImageView(iconWidth)]-5-[textField]-leftInset-|" options:0 metrics:@{@"leftInset":@(_iconLeftInset),@"iconWidth":@(_iconActive.size.width)} views:viewsDict]];
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconImageView(s)]" options:0 metrics:@{@"s":@(_iconActive.size.height)} views:viewsDict]];
+            [addedConstraints addObject:[NSLayoutConstraint constraintWithItem:iconImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+            [addedConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[textField]-2-|" options:0 metrics:nil views:viewsDict]];
+            
+            [self addConstraints:addedConstraints];
+            [self layoutIfNeeded];
+        }
+    }else if (_icon) {
         [iconImageView setImage:_icon];
         if (inInterfaceBuilder) {
             [iconImageView setFrame:CGRectMake(_iconLeftInset, (self.frame.size.height - _icon.size.height)/2, _icon.size.width, _icon.size.height)];
@@ -288,6 +311,7 @@
 -(void)setText:(NSString *)text{
     textField.text = text;
     [self updateBorderColorBasedOnTextLength];
+    [self updateImageViewBasedOnLeftInsetAndIcon];
 }
 
 -(NSString*)text{
@@ -337,6 +361,8 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)tf{
     self.layer.borderColor = self.borderColorActive.CGColor;
+    [iconImageView setImage:_iconActive];
+
     if (_clearIcon) {
         [textField setRightViewMode:UITextFieldViewModeWhileEditing];
         [textField setRightView:[self clearBtnWithClearIcon:_clearIcon]];
@@ -368,6 +394,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)tf{
     [self updateBorderColorBasedOnTextLength];
+    [self updateImageViewBasedOnLeftInsetAndIcon];
+    
     if (_rightIcon) {
         [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
         [textField setRightView:[[UIImageView alloc] initWithImage:_rightIcon]];

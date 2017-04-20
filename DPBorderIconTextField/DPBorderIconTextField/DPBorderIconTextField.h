@@ -27,6 +27,7 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable UIColor *borderColorActive;
 
 @property (nonatomic,strong) IBInspectable UIImage *icon;
+@property (nonatomic,strong) IBInspectable UIImage *iconActive;
 @property (nonatomic) IBInspectable NSInteger iconLeftInset;
 
 @property (nonatomic,strong) IBInspectable UIImage *clearIcon;
