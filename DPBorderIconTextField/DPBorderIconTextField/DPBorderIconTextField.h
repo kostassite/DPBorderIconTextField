@@ -20,6 +20,8 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable NSInteger borderWidth;
 
 @property (nonatomic) IBInspectable BOOL hasRoundedCorners;
+@property (nonatomic) IBInspectable NSUInteger roundedCornersRadius; // default = 0, if zero then is equal to height/2 
+
 
 @property (nonatomic,strong) IBInspectable UIColor *borderColor;
 @property (nonatomic,strong) IBInspectable UIColor *borderColorActive;

@@ -152,11 +152,7 @@
         }
     }
     
-    if (_hasRoundedCorners) {
-        [self.layer setCornerRadius:self.frame.size.height/2];
-    }else{
-        [self.layer setCornerRadius:0];
-    }
+    [self updateRoundedCorners];
 }
 
 -(void)setBorderColor:(UIColor *)borderColor{
@@ -177,8 +173,21 @@
 -(void)setHasRoundedCorners:(BOOL)hasRoundedCorners{
     _hasRoundedCorners = hasRoundedCorners;
     
+    [self updateRoundedCorners];
+}
+
+-(void)setRoundedCornersRadius:(NSUInteger)roundedCornersRadius{
+    _roundedCornersRadius = roundedCornersRadius;
+    [self updateRoundedCorners];
+}
+
+-(void)updateRoundedCorners{
     if (_hasRoundedCorners) {
-        [self.layer setCornerRadius:self.frame.size.height/2];
+        if (_roundedCornersRadius > 0) {
+            [self.layer setCornerRadius:_roundedCornersRadius];
+        }else{
+            [self.layer setCornerRadius:self.frame.size.height/2];
+        }
     }else{
         [self.layer setCornerRadius:0];
     }

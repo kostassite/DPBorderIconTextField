@@ -70,6 +70,19 @@
     XCTAssertEqual(borderIconTextField.layer.cornerRadius, 0,@"Corner radius should be equal to 0");
 }
 
+-(void)testThatRoundedCornersRadiusChangesBorderCornerRadius{
+    borderIconTextField.hasRoundedCorners = YES;
+    borderIconTextField.roundedCornersRadius = 5;
+    XCTAssertEqual(borderIconTextField.layer.cornerRadius, 5,@"Corner radius should be equal to roundedCornerRadius");
+}
+
+-(void)testThatSetRoundedCornersRadiusTo0MakeItEqualToHeightDiv2{
+    borderIconTextField.hasRoundedCorners = YES;
+    borderIconTextField.roundedCornersRadius = 0;
+
+    XCTAssertEqual(borderIconTextField.layer.cornerRadius, borderIconTextField.frame.size.height/2,@"Corner radius should be equal to height/2");
+}
+
 -(void)testThatBorderColorIsSameAsProperty{
     borderIconTextField.hasBorder = YES;
     borderIconTextField.borderColor = [UIColor redColor];
