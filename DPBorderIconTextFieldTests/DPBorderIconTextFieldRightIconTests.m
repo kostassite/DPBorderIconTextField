@@ -200,7 +200,7 @@
     [borderIconTextField setUnvalidatedIcon:unvalidIcon];
     [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     
-    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
+    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
     XCTAssertTrue([[(UIImageView*)tf.rightView image] isEqual:unvalidIcon],@"Right View should have the unvalidIcon");
 }
@@ -213,7 +213,7 @@
     [borderIconTextField setRightIcon:rightIcon];
     [borderIconTextField showValidationSucceed:NO withResignFirstResponder:NO];
     
-    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeUnlessEditing);
+    XCTAssertEqual(tf.rightViewMode, UITextFieldViewModeAlways);
     XCTAssertTrue([tf.rightView isKindOfClass:[UIImageView class]],@"Right View should be an UIImageView");
     XCTAssertTrue([[(UIImageView*)tf.rightView image] isEqual:unvalidIcon],@"Right View should have the unvalidIcon");
 }
