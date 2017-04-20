@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		06ECA29004DED2826948B845 /* Pods_DPBorderIconTextFieldTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF319BA3383C1B94CA5C5F1 /* Pods_DPBorderIconTextFieldTests.framework */; };
-		10DC92DA2EF80C9A6469C2E2 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A0356E2D65817F77B4011 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldTests.framework */; };
-		138A3DFA48C4669DF867D07C /* Pods_DPBorderIconTextField_DPBorderIconTextFieldUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE522566CADBF9008D39FD64 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldUITests.framework */; };
 		2E76EB5C1E1E5B71000FAE0A /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E76EB5B1E1E5B71000FAE0A /* clear.png */; };
 		2E9937BA1E1E5A590005D209 /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937B91E1E5A590005D209 /* earth.png */; };
 		2E9937BC1E1E5A8B0005D209 /* unvalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9937BB1E1E5A8B0005D209 /* unvalid.png */; };
@@ -82,16 +80,12 @@
 		2EF319BA3383C1B94CA5C5F1 /* Pods_DPBorderIconTextFieldTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPBorderIconTextFieldTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		308A0356E2D65817F77B4011 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPBorderIconTextField_DPBorderIconTextFieldTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E31E85FEEDDD851D5CBE0E /* Pods-DPBorderIconTextFieldUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextFieldUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		60D2740CEEE0113EAD7DCEE8 /* Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField-DPBorderIconTextFieldTests/Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.debug.xcconfig"; sourceTree = "<group>"; };
 		719D85CB60AECDBDE55857BF /* Pods_DPBorderIconTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPBorderIconTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		735E3B47B0C5D62D1F16FF5D /* Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91F82CEAE7DEDF1EE586E8FB /* Pods-DPBorderIconTextFieldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests.release.xcconfig"; sourceTree = "<group>"; };
-		A21304F6EBC612B25D731360 /* Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests/Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB9630C90BF49EAB8344ED6B /* Pods-DPBorderIconTextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField/Pods-DPBorderIconTextField.debug.xcconfig"; sourceTree = "<group>"; };
 		CDC663ADE5474F6F30E314BD /* Pods_DPBorderIconTextFieldUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPBorderIconTextFieldUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE522566CADBF9008D39FD64 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPBorderIconTextField_DPBorderIconTextFieldUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6977EA5F24CD1199258F9F1 /* Pods-DPBorderIconTextFieldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextFieldTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextFieldTests/Pods-DPBorderIconTextFieldTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F78D52D899B4910AE08B435F /* Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DPBorderIconTextField-DPBorderIconTextFieldTests/Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				06ECA29004DED2826948B845 /* Pods_DPBorderIconTextFieldTests.framework in Frameworks */,
-				10DC92DA2EF80C9A6469C2E2 /* Pods_DPBorderIconTextField_DPBorderIconTextFieldTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44361C554498624DEC7B235 /* Pods_DPBorderIconTextFieldUITests.framework in Frameworks */,
-				138A3DFA48C4669DF867D07C /* Pods_DPBorderIconTextField_DPBorderIconTextFieldUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,10 +125,6 @@
 				91F82CEAE7DEDF1EE586E8FB /* Pods-DPBorderIconTextFieldTests.release.xcconfig */,
 				34E31E85FEEDDD851D5CBE0E /* Pods-DPBorderIconTextFieldUITests.debug.xcconfig */,
 				0F0938318B943C5AF78EEDAA /* Pods-DPBorderIconTextFieldUITests.release.xcconfig */,
-				60D2740CEEE0113EAD7DCEE8 /* Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.debug.xcconfig */,
-				F78D52D899B4910AE08B435F /* Pods-DPBorderIconTextField-DPBorderIconTextFieldTests.release.xcconfig */,
-				735E3B47B0C5D62D1F16FF5D /* Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.debug.xcconfig */,
-				A21304F6EBC612B25D731360 /* Pods-DPBorderIconTextField-DPBorderIconTextFieldUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
