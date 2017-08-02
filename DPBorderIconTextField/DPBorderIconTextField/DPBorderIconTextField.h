@@ -15,6 +15,7 @@ IB_DESIGNABLE
 @interface DPBorderIconTextField : UIView{
     UIImageView *iconImageView;
     UITextField *textField;
+    UIView *underlineView;
 }
 
 @property (nonatomic) IBInspectable BOOL hasBorder;
@@ -27,6 +28,9 @@ IB_DESIGNABLE
 
 @property (nonatomic,strong) IBInspectable UIColor *borderColor;
 @property (nonatomic,strong) IBInspectable UIColor *borderColorActive;
+
+@property (nonatomic,strong) IBInspectable UIColor *underlineColor;
+@property (nonatomic,strong) IBInspectable UIColor *underlineInEditColor;
 
 @property (nonatomic,strong) IBInspectable UIImage *icon;
 @property (nonatomic,strong) IBInspectable UIImage *iconActive;
