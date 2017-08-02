@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#if UnitTest == 0
 IB_DESIGNABLE
+#endif
 
 @interface DPBorderIconTextField : UIView{
     UIImageView *iconImageView;
