@@ -71,7 +71,6 @@
     self.translatesAutoresizingMaskIntoConstraints = inInterfaceBuilder;
     [self setupIconImageView];
     [self setupTextField];
-    [self setupUnderlineView];
     [self updateImageViewBasedOnLeftInsetAndIcon];
 }
 
@@ -96,17 +95,6 @@
     [textField setIsAccessibilityElement:YES];
 
     [self addSubview:textField];
-}
-
--(void)setupUnderlineView{
-    underlineView = [[UIView alloc]initWithFrame:CGRectZero];
-    [underlineView setBackgroundColor:nil];
-    [underlineView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    [self addSubview:underlineView];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[underlineView(1)]-0-|" options:0 metrics:nil views:@{@"underlineView":underlineView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[underlineView]-0-|" options:0 metrics:nil views:@{@"underlineView":underlineView}]];
 }
 
 #pragma mark - IBInspectable Setters
@@ -203,24 +191,6 @@
 -(void)setBorderWidth:(NSInteger)borderWidth{
     _borderWidth = borderWidth;
     [self.layer setBorderWidth:_borderWidth];
-}
-
--(void)setUnderlineColor:(UIColor *)underlineColor{
-    _underlineColor = underlineColor;
-    [self updateUnderlineColorBasedOnEditMode];
-}
-
--(void)setUnderlineInEditColor:(UIColor *)underlineInEditColor{
-    _underlineInEditColor = underlineInEditColor;
-    [self updateUnderlineColorBasedOnEditMode];
-}
-
--(void)updateUnderlineColorBasedOnEditMode{
-    if (textField.editing) {
-        [underlineView setBackgroundColor:_underlineInEditColor];
-    }else{
-        [underlineView setBackgroundColor:_underlineColor];
-    }
 }
 
 -(void)setHasRoundedCorners:(BOOL)hasRoundedCorners{
@@ -392,7 +362,6 @@
 - (void)textFieldDidBeginEditing:(UITextField *)tf{
     self.layer.borderColor = self.borderColorActive.CGColor;
     [iconImageView setImage:_iconActive];
-    [self updateUnderlineColorBasedOnEditMode];
 
     if (_clearIcon) {
         [textField setRightViewMode:UITextFieldViewModeWhileEditing];
@@ -426,7 +395,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)tf{
     [self updateBorderColorBasedOnTextLength];
     [self updateImageViewBasedOnLeftInsetAndIcon];
-    [self updateUnderlineColorBasedOnEditMode];
     
     if (_rightIcon) {
         [textField setRightViewMode:UITextFieldViewModeUnlessEditing];
@@ -492,6 +460,14 @@
         
         [textField setRightView:[[UIImageView alloc]initWithImage:_unvalidatedIcon]];
     }
+    
+    if (succeed && _borderValidatedColor){
+        [self.layer setBorderColor:_borderValidatedColor.CGColor];
+        self.textField.tintColor = _borderValidatedColor;
+    }else if (!succeed && _borderInvalidatedColor){
+        [self.layer setBorderColor:_borderInvalidatedColor.CGColor];
+        self.textField.tintColor = _borderInvalidatedColor;
+    }
 }
 
 -(void)clearValidationState{
@@ -509,6 +485,7 @@
         [textField setRightViewMode:UITextFieldViewModeNever];
         [textField setRightView:nil];
     }
+    [self updateBorderColorBasedOnTextLength];
 }
 
 #pragma mark - Accessibility
