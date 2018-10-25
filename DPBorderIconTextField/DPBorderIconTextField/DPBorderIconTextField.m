@@ -450,6 +450,7 @@
             [textField setRightViewMode:UITextFieldViewModeAlways];
         }
         
+        _isValidated = YES;
         [textField setRightView:[[UIImageView alloc]initWithImage:_validatedIcon]];
     }else if (!succeed && _unvalidatedIcon){
         if (resignFirstResponder) {
@@ -458,15 +459,18 @@
             [textField setRightViewMode:UITextFieldViewModeAlways];
         }
         
+        _isValidated = NO;
         [textField setRightView:[[UIImageView alloc]initWithImage:_unvalidatedIcon]];
     }
     
     if (succeed && _borderValidatedColor){
         [self.layer setBorderColor:_borderValidatedColor.CGColor];
         self.textField.tintColor = _borderValidatedColor;
+        _isValidated = YES;
     }else if (!succeed && _borderInvalidatedColor){
         [self.layer setBorderColor:_borderInvalidatedColor.CGColor];
         self.textField.tintColor = _borderInvalidatedColor;
+        _isValidated = NO;
     }
 }
 
