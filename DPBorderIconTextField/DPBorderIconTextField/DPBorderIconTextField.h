@@ -10,7 +10,7 @@
 
 IB_DESIGNABLE
 
-@interface DPBorderIconTextField : UIView{
+@interface DPBorderIconTextField : UIView <UITextFieldDelegate>{
     UIImageView *iconImageView;
     UITextField *textField;
 }
@@ -46,8 +46,6 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable NSString *placeholder;
 @property (nonatomic,strong) IBInspectable NSString *text;
 @property (nonatomic,strong) IBInspectable UIColor *textColor;
-
-@property (nonatomic) BOOL isValidated;
 
 @property (nonatomic,weak) IBOutlet id<UITextFieldDelegate> textFieldDelegate;
 
